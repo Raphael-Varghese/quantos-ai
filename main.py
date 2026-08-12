@@ -2,7 +2,7 @@ import random,os
 sys_val_key = "80218021"
 code1 = input("Enter system validation Key:\n")
 if code1 == sys_val_key: 
-    os.system('cls')
+    os.system('clear')
     pass
 else:
     for i in range(50): print(random.randint(1111111111, 9999999999))
@@ -130,7 +130,7 @@ def run_ai_engine():
     elif models_num == 6: instr = Copilot + inst
     elif models_num == 7: instr = cs + inst
     else: raise ValueError("Incorrect number.")
-    os.system('cls')
+    os.system('clear')
     while True:
         p=input("\nUser: ").strip()
         if not p or p.lower() in ['exit','quit']:break
