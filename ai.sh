@@ -13,7 +13,7 @@ if [ "$AVAIL_RAM" -ge 28 ]; then
     MODEL_REPO="unsloth/Qwen3.5-32B-GGUF"
     MODEL_FILE="Qwen3.5-32B-Q4_K_M.gguf"
 elif [ "$AVAIL_RAM" -ge 16 ]; then
-    MODEL_REPO="bartowski/Qwen_Qwen3.5-9B-GGUF
+    MODEL_REPO="bartowski/Qwen_Qwen3.5-9B-GGUF"
     MODEL_FILE="Qwen3.5-24B-Q4_K_M.gguf"
 elif [ "$AVAIL_RAM" -ge 14 ]; then
     MODEL_REPO="unsloth/Qwen3.5-14B-GGUF"
