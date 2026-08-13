@@ -1,4 +1,9 @@
 #!/bin/bash
+export PATH="$HOME/.local/bin:$PATH"
+sudo apt update && sudo apt install -y curl git
+curl -LsSf https://hf.co/cli/install.sh | bash
+source ~/.bashrc
+sudo apt install python3.12-venv
 AVAIL_RAM=$(free -g | awk '/^Mem:/{print $7}')
 if [ -z "$AVAIL_RAM" ] || [ "$AVAIL_RAM" -eq 0 ]; then
     AVAIL_RAM=$(free -g | awk '/^Mem:/{print $4}')
