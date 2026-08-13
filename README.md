@@ -12,11 +12,19 @@ Quantos is an artificial intelligence built fully from scratch in Python. It run
 
 ## Installation
 
-Clone the repository to your local machine:
+Install some stuff then clone:
 
 ```bash
-git clone https://github.com
-cd quantos
+sudo apt install gh -y
+gh auth login
+```
+Follow the prompts to login to ensure you have access. **THIS IS A PREDEV FEATURE AND WILL BE REMOVED ON RELEASE**
+
+After:
+
+```bash
+gh repo clone Raphael-Varghese/Source-Code-AI AI
+cd AI
 ```
 
 I have made a all-around script that installs **all** your dependencies and **fully** runs the AI.
