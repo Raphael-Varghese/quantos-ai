@@ -1,6 +1,12 @@
-# Quantos
+# Mosaic
 
-Quantos is an artificial intelligence built fully from scratch in Python. It runs entirely in your terminal with a clean user interface. It checks your system RAM and changes its model size to fit your computer. It can also search the web and run Python code safely.
+Mosaic is an artificial intelligence built fully from scratch in Python. It runs entirely in your terminal with a clean user interface. It checks your system RAM and changes its model size to fit your computer. It can also search the web and run Python code safely.
+
+## PLEASE BE SURE TO KNOW:
+**THIS PROJECT IS NOT DONE. CURRENTLY, THE MAIN AI IS STILL BEING DEVELOPED. THE CURRENT RELEASES AND FOLLOWING INSTRUCTIONS ARE FOR THE PLACEHOLDER AI.**
+**FOLLOW THE INSTRUCTIONS UNDER THIS LINE TO JUST GET THE PLACEHOLDER AI**
+
+---
 
 ## Features
 
