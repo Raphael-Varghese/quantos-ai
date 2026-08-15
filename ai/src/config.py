@@ -8,10 +8,19 @@ import torch
 
 DEVICE = torch.device("cpu")
 
-CPU_COUNT = os.cpu_count() or 4
+CPU_COUNT = min(
+    os.cpu_count() or 4,
+    4
+)
 
-# Don't necessarily use every available CPU thread.
 torch.set_num_threads(CPU_COUNT)
+
+
+# ============================================================
+# Reproducibility
+# ============================================================
+
+SEED = 1337
 
 
 # ============================================================
@@ -48,17 +57,26 @@ BATCH_SIZE = 8
 
 GRADIENT_ACCUMULATION_STEPS = 4
 
+MAX_STEPS = 5000
+
 LEARNING_RATE = 3e-4
+
+MIN_LEARNING_RATE = 3e-5
+
+WARMUP_STEPS = 250
 
 WEIGHT_DECAY = 0.1
 
-MAX_STEPS = 5000
+GRADIENT_CLIP = 1.0
+
+
+# ============================================================
+# Evaluation
+# ============================================================
 
 EVAL_INTERVAL = 250
 
 EVAL_STEPS = 50
-
-GRADIENT_CLIP = 1.0
 
 
 # ============================================================
@@ -70,3 +88,5 @@ CHECKPOINT_DIR = "checkpoints"
 CHECKPOINT_FILE = (
     f"{CHECKPOINT_DIR}/model.pt"
 )
+
+RESUME_FROM_CHECKPOINT = True

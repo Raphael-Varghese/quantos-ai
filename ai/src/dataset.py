@@ -78,21 +78,32 @@ class TextDataset:
 
             data = self.validation_data
 
+        max_position = (
+            len(data) - BLOCK_SIZE - 1
+        )
+
         positions = torch.randint(
             0,
-            len(data) - BLOCK_SIZE - 1,
+            max_position + 1,
             (BATCH_SIZE,)
         )
 
-        x = torch.stack([
-            data[i:i + BLOCK_SIZE]
-            for i in positions
-        ])
+        offsets = torch.arange(
+            BLOCK_SIZE
+        )
 
-        y = torch.stack([
-            data[i + 1:i + BLOCK_SIZE + 1]
-            for i in positions
-        ])
+        indices = (
+            positions[:, None]
+            + offsets[None, :]
+        )
+
+        x = data[
+            indices
+        ]
+
+        y = data[
+            indices + 1
+        ]
 
         return (
             x.to(DEVICE),
