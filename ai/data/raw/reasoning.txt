@@ -1,32 +1,57 @@
-SYSTEM: Solve the problem carefully.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
-USER: If a box contains 5 groups of 8 objects, how many objects are there?
+<user>
+Why might a larger model not always perform better?
 
-ASSISTANT: There are 5 groups and each group contains 8 objects.
+<assistant>
+A larger model has more representational capacity, but model size alone
+does not guarantee better performance. Results also depend on data quality,
+data quantity, architecture, optimization, regularization, and training
+compute.
 
-5 × 8 = 40.
+<end>
 
-Therefore, there are 40 objects.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
-SYSTEM: Solve the problem carefully.
+<user>
+Why is validation data useful?
 
-USER: A program processes 100 records in 5 seconds. Assuming constant
-processing speed, how many records can it process in 20 seconds?
+<assistant>
+Validation data provides a way to evaluate a model on examples that were not
+used directly for parameter updates. It can reveal whether improvements on
+the training data are also reflected in generalization.
 
-ASSISTANT: 20 seconds is four times 5 seconds.
+<end>
 
-100 × 4 = 400.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
-Therefore, the program can process approximately 400 records in 20 seconds
-under the stated assumption.
+<user>
+Why does a language model need a tokenizer?
 
-SYSTEM: Solve the problem carefully.
+<assistant>
+Neural networks operate on numerical representations. A tokenizer converts
+text into discrete tokens that can then be represented by integer IDs and
+processed by the neural network.
 
-USER: Why might increasing model size not always improve a model?
+<end>
 
-ASSISTANT: Larger models generally provide more representational capacity,
-but size alone does not guarantee better results. Performance also depends
-on training data quality, quantity, optimization, architecture, training
-compute, and evaluation. A larger model trained poorly can perform worse
-than a smaller well-trained model.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is gradient clipping?
+
+<assistant>
+Gradient clipping limits the magnitude of gradients before an optimizer
+updates model parameters. It can help prevent unstable updates caused by
+very large gradients.
+
+<end>
 

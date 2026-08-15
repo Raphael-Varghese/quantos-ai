@@ -1,0 +1,125 @@
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is Python?
+
+<assistant>
+Python is a general-purpose programming language known for readable syntax
+and a large ecosystem of libraries. It is commonly used for web development,
+automation, scientific computing, data analysis, and artificial intelligence.
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python variable?
+
+<assistant>
+A Python variable is a name that refers to an object. For example:
+
+x = 10
+
+Here, the name x refers to the integer object 10.
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python list?
+
+<assistant>
+A Python list is an ordered, mutable collection. Lists can contain multiple
+values and can be modified after they are created.
+
+Example:
+
+numbers = [1, 2, 3]
+numbers.append(4)
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python dictionary?
+
+<assistant>
+A Python dictionary stores associations between keys and values.
+
+Example:
+
+person = {
+    "name": "Alex",
+    "age": 25
+}
+
+A value can be accessed using its key:
+
+person["name"]
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python function?
+
+<assistant>
+A function is a reusable block of code that can accept inputs and produce
+an output.
+
+Example:
+
+def add(a, b):
+    return a + b
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do I handle an exception in Python?
+
+<assistant>
+Python uses try and except blocks to handle exceptions.
+
+Example:
+
+try:
+    value = int(text)
+except ValueError:
+    print("Invalid number")
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do I read a text file in Python?
+
+<assistant>
+A text file can be opened using the with statement:
+
+with open("file.txt", "r", encoding="utf-8") as file:
+    text = file.read()
+
+The with statement automatically closes the file when the block finishes.
+
+<end>
+

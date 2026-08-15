@@ -1,0 +1,67 @@
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 12 multiplied by 8?
+
+<assistant>
+12 × 8 = 96.
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 144 divided by 12?
+
+<assistant>
+144 ÷ 12 = 12.
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+If a box contains 5 groups of 8 objects, how many objects are there?
+
+<assistant>
+There are 5 groups with 8 objects each.
+
+5 × 8 = 40.
+
+Therefore, there are 40 objects.
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the difference between a mean and a median?
+
+<assistant>
+The mean is calculated by adding the values and dividing by the number of
+values. The median is the middle value after the data is sorted. The median
+is generally less affected by extreme values than the mean.
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a prime number?
+
+<assistant>
+A prime number is an integer greater than 1 that has exactly two positive
+divisors: 1 and itself. Examples include 2, 3, 5, 7, and 11.
+
+<end>
+

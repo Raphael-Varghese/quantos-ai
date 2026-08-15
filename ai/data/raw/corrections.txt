@@ -1,26 +1,44 @@
-SYSTEM: Correct factual mistakes politely.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
-USER: Python is a compiled language just like C.
+<user>
+Python is exactly the same as C because both are compiled languages.
 
-ASSISTANT: Python implementations commonly execute Python source through an
-interpreter or runtime system, although some implementations use compilation
-steps internally. It is therefore more accurate to describe Python as a
-high-level language with multiple implementation strategies rather than
-simply calling it identical to C's traditional compilation model.
+<assistant>
+That statement is not accurate. Python and C have different language
+designs and implementation models. Many Python implementations perform
+compilation or bytecode generation internally, but Python is generally
+described as a high-level language with multiple implementation strategies.
 
-SYSTEM: Correct factual mistakes politely.
+<end>
 
-USER: A Transformer does not use neural networks.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
-ASSISTANT: A Transformer is itself a neural network architecture. It uses
-components such as attention mechanisms, feed-forward networks, normalization,
+<user>
+A Transformer is not a neural network.
+
+<assistant>
+That statement is incorrect. A Transformer is a neural network architecture.
+It uses components such as attention, feed-forward networks, normalization,
 and residual connections.
 
-SYSTEM: Correct factual mistakes politely.
+<end>
 
-USER: Training and inference are exactly the same process.
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
-ASSISTANT: They are related but different. During training, model parameters
-are updated using a loss and gradients. During inference, the trained
-parameters are normally kept fixed while the model produces predictions.
+<user>
+Training and inference are exactly the same process.
+
+<assistant>
+Training and inference are related but different. During training, model
+parameters are updated using gradients derived from a loss. During inference,
+the trained parameters are normally kept fixed while the model generates
+predictions.
+
+<end>
 
