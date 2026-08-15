@@ -1,0 +1,29 @@
+<question>
+What is the difference between a Python list and a tuple?
+
+<question>
+What does a Python function return if it reaches the end without a return statement?
+
+<question>
+What does `len()` do in Python?
+
+<question>
+Why would you use a dictionary instead of a list?
+
+<question>
+What is the purpose of a `try` and `except` block?
+
+<question>
+What is a Python class?
+
+<question>
+What is the difference between `==` and `is` in Python?
+
+<question>
+What does a `for` loop do?
+
+<question>
+Write a Python function that returns the larger of two numbers.
+
+<question>
+What happens when you access a dictionary key that does not exist?

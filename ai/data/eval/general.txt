@@ -1,0 +1,29 @@
+<question>
+What is a computer program?
+
+<question>
+What is the purpose of an operating system?
+
+<question>
+What is a database?
+
+<question>
+What is an algorithm?
+
+<question>
+What is the difference between hardware and software?
+
+<question>
+What is the internet?
+
+<question>
+What does it mean for information to be compressed?
+
+<question>
+Why are backups useful?
+
+<question>
+What is an API?
+
+<question>
+Why is documentation useful for software projects?

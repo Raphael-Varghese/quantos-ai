@@ -1,0 +1,29 @@
+<question>
+What is 17 + 28?
+
+<question>
+What is 12 multiplied by 9?
+
+<question>
+If a number is divided by 4 and the result is 7, what was the original number?
+
+<question>
+What is the average of 10, 20, and 30?
+
+<question>
+What is 15 percent of 200?
+
+<question>
+If a rectangle has a width of 8 and a height of 5, what is its area?
+
+<question>
+What is the next number in the sequence 2, 4, 8, 16?
+
+<question>
+If 3 notebooks cost $12, how much does one notebook cost?
+
+<question>
+What is the value of 5 squared?
+
+<question>
+A train travels 60 miles per hour for 3 hours. How far does it travel?

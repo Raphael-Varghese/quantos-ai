@@ -1,5 +1,3 @@
-import sys
-
 import torch
 
 from .config import (
@@ -8,6 +6,7 @@ from .config import (
 )
 
 from .model import GPT
+from .subword_tokenizer import SubwordTokenizer
 
 
 # ============================================================
@@ -22,44 +21,19 @@ checkpoint = torch.load(
     weights_only=False
 )
 
-vocab_size = checkpoint[
-    "vocab_size"
-]
-
-stoi = checkpoint[
-    "tokenizer_stoi"
-]
-
-itos = checkpoint[
-    "tokenizer_itos"
-]
+vocab_size = checkpoint["vocab_size"]
 
 
 # ============================================================
-# Tokenizer functions
+# Tokenizer
 # ============================================================
 
-def encode(text):
+tokenizer = SubwordTokenizer()
 
-    tokens = []
-
-    for character in text:
-
-        if character in stoi:
-
-            tokens.append(
-                stoi[character]
-            )
-
-    return tokens
-
-
-def decode(tokens):
-
-    return "".join(
-        itos[token]
-        for token in tokens
-    )
+print("Tokenizer loaded.")
+print(
+    f"Vocabulary size: {tokenizer.vocab_size}"
+)
 
 
 # ============================================================
@@ -91,7 +65,7 @@ while True:
 
     prompt = input("You: ")
 
-    if prompt.lower() == "exit":
+    if prompt.lower().strip() == "exit":
 
         break
 
@@ -99,15 +73,29 @@ while True:
 
         continue
 
-    encoded = encode(prompt)
 
-    if not encoded:
+    # --------------------------------------------------------
+    # Build conversation prompt
+    # --------------------------------------------------------
 
-        print(
-            "I don't recognize those characters."
-        )
+    formatted_prompt = (
+        "<bos>\n"
+        "<system>\n"
+        "You are Mosaic, a helpful general-purpose artificial "
+        "intelligence assistant.\n\n"
+        "<user>\n"
+        f"{prompt}\n\n"
+        "<assistant>\n"
+    )
 
-        continue
+
+    # --------------------------------------------------------
+    # Tokenize
+    # --------------------------------------------------------
+
+    encoded = tokenizer.encode(
+        formatted_prompt
+    )
 
     tokens = torch.tensor(
         [encoded],
@@ -115,21 +103,67 @@ while True:
         device=DEVICE
     )
 
-    generated = model.generate(
-        tokens,
-        max_new_tokens=200,
-        temperature=0.8,
-        top_k=40
-    )
+
+    # --------------------------------------------------------
+    # Generate
+    # --------------------------------------------------------
+
+    with torch.no_grad():
+
+        generated = model.generate(
+            tokens,
+            max_new_tokens=100,
+            temperature=0.8,
+            top_k=40
+        )
+
+
+    # --------------------------------------------------------
+    # Get newly generated tokens
+    # --------------------------------------------------------
 
     new_tokens = generated[
-        0
+        0,
+        len(encoded):
     ].tolist()
 
-    response = decode(
+
+    # --------------------------------------------------------
+    # Stop at <end>
+    # --------------------------------------------------------
+
+    end_tokens = tokenizer.encode(
+        "<end>"
+    )
+
+    end_length = len(end_tokens)
+
+    for i in range(
+        len(new_tokens) - end_length + 1
+    ):
+
+        if (
+            new_tokens[
+                i:i + end_length
+            ]
+            ==
+            end_tokens
+        ):
+
+            new_tokens = new_tokens[:i]
+
+            break
+
+
+    # --------------------------------------------------------
+    # Decode
+    # --------------------------------------------------------
+
+    response = tokenizer.decode(
         new_tokens
     )
 
+
     print()
-    print("AI:", response)
+    print("AI:", response.strip())
     print()
