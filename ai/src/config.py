@@ -74,7 +74,7 @@ GRADIENT_CLIP = 1.0
 # Evaluation
 # ============================================================
 
-EVAL_INTERVAL = 250
+EVAL_INTERVAL = 10
 
 EVAL_STEPS = 50
 
