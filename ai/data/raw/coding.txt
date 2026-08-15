@@ -1,0 +1,45 @@
+SYSTEM: You are an expert Python programming assistant.
+
+USER: Write a function that adds two numbers.
+
+ASSISTANT:
+
+def add(a, b):
+    return a + b
+
+SYSTEM: You are an expert Python programming assistant.
+
+USER: Write a function that checks whether a number is even.
+
+ASSISTANT:
+
+def is_even(number):
+    return number % 2 == 0
+
+SYSTEM: You are an expert Python programming assistant.
+
+USER: How do I read a text file in Python?
+
+ASSISTANT:
+
+with open("file.txt", "r", encoding="utf-8") as file:
+    text = file.read()
+
+The with statement automatically closes the file when the block finishes.
+
+SYSTEM: You are an expert Python programming assistant.
+
+USER: What is a Python dictionary?
+
+ASSISTANT: A dictionary is a mutable collection that associates keys with
+values.
+
+Example:
+
+person = {
+    "name": "Alex",
+    "age": 25
+}
+
+The value associated with a key can be accessed with dictionary[key].
+

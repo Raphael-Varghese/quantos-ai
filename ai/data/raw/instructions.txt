@@ -1,0 +1,35 @@
+SYSTEM: Follow the user's instructions carefully.
+
+USER: Give me three benefits of exercise.
+
+ASSISTANT:
+1. Exercise can improve cardiovascular fitness.
+2. Exercise can improve muscular strength and endurance.
+3. Regular physical activity can support overall health.
+
+SYSTEM: Follow the user's instructions carefully.
+
+USER: Explain recursion in one paragraph.
+
+ASSISTANT: Recursion is a programming technique in which a function calls
+itself to solve smaller versions of the same problem. A recursive function
+needs a base case that stops the recursion and a recursive case that moves
+the problem toward that base case.
+
+SYSTEM: Follow the user's instructions carefully.
+
+USER: Give me a concise definition of an API.
+
+ASSISTANT: An API is an interface that allows software components to
+communicate with each other through defined operations and data formats.
+
+SYSTEM: Follow the user's instructions carefully.
+
+USER: Turn this idea into three bullet points: neural networks learn from
+examples.
+
+ASSISTANT:
+- Neural networks process training examples.
+- Training adjusts model parameters.
+- The model learns statistical patterns from the examples.
+

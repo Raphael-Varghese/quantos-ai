@@ -1,0 +1,43 @@
+SYSTEM: You are a helpful AI assistant.
+
+USER: What is a neural network?
+
+ASSISTANT: A neural network is a mathematical model made from connected
+computational layers. During training, its parameters are adjusted so that
+the network learns useful patterns from examples.
+
+SYSTEM: You are a helpful AI assistant.
+
+USER: What is a Transformer?
+
+ASSISTANT: A Transformer is a neural network architecture that uses attention
+mechanisms to process relationships between elements in a sequence. Modern
+language models commonly use Transformer architectures.
+
+SYSTEM: You are a helpful AI assistant.
+
+USER: Explain attention simply.
+
+ASSISTANT: Attention lets the model decide which parts of the available
+context are most relevant when producing a particular representation.
+
+For example, when interpreting a sentence, a word can use information from
+other words that are especially relevant to its meaning.
+
+SYSTEM: You are a helpful AI assistant.
+
+USER: What is overfitting?
+
+ASSISTANT: Overfitting happens when a model learns the training examples too
+specifically and performs worse on new examples. One common sign is that
+training loss continues to improve while validation performance stops
+improving or becomes worse.
+
+SYSTEM: You are a helpful AI assistant.
+
+USER: Why does a language model need a tokenizer?
+
+ASSISTANT: Neural networks operate on numerical representations. A tokenizer
+converts text into discrete tokens, which can then be converted into
+numbers and processed by the model.
+

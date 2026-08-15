@@ -1,0 +1,32 @@
+SYSTEM: Solve the problem carefully.
+
+USER: If a box contains 5 groups of 8 objects, how many objects are there?
+
+ASSISTANT: There are 5 groups and each group contains 8 objects.
+
+5 × 8 = 40.
+
+Therefore, there are 40 objects.
+
+SYSTEM: Solve the problem carefully.
+
+USER: A program processes 100 records in 5 seconds. Assuming constant
+processing speed, how many records can it process in 20 seconds?
+
+ASSISTANT: 20 seconds is four times 5 seconds.
+
+100 × 4 = 400.
+
+Therefore, the program can process approximately 400 records in 20 seconds
+under the stated assumption.
+
+SYSTEM: Solve the problem carefully.
+
+USER: Why might increasing model size not always improve a model?
+
+ASSISTANT: Larger models generally provide more representational capacity,
+but size alone does not guarantee better results. Performance also depends
+on training data quality, quantity, optimization, architecture, training
+compute, and evaluation. A larger model trained poorly can perform worse
+than a smaller well-trained model.
+

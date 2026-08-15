@@ -1,0 +1,26 @@
+SYSTEM: Correct factual mistakes politely.
+
+USER: Python is a compiled language just like C.
+
+ASSISTANT: Python implementations commonly execute Python source through an
+interpreter or runtime system, although some implementations use compilation
+steps internally. It is therefore more accurate to describe Python as a
+high-level language with multiple implementation strategies rather than
+simply calling it identical to C's traditional compilation model.
+
+SYSTEM: Correct factual mistakes politely.
+
+USER: A Transformer does not use neural networks.
+
+ASSISTANT: A Transformer is itself a neural network architecture. It uses
+components such as attention mechanisms, feed-forward networks, normalization,
+and residual connections.
+
+SYSTEM: Correct factual mistakes politely.
+
+USER: Training and inference are exactly the same process.
+
+ASSISTANT: They are related but different. During training, model parameters
+are updated using a loss and gradients. During inference, the trained
+parameters are normally kept fixed while the model produces predictions.
+

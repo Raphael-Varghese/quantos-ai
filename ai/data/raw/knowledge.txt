@@ -1,0 +1,117 @@
+TOPIC: Artificial Intelligence
+
+Artificial intelligence is the field of creating computer systems that
+perform tasks commonly associated with intelligence.
+
+Machine learning is a subset of artificial intelligence in which a model
+learns patterns from data.
+
+Deep learning is a type of machine learning based on neural networks with
+multiple computational layers.
+
+A language model predicts tokens based on previous tokens.
+
+A Transformer is a neural network architecture based heavily on attention
+mechanisms.
+
+Attention allows a model to assign different importance to different parts
+of an input sequence.
+
+A neural network contains parameters whose values are adjusted during
+training.
+
+Training generally involves making predictions, calculating a loss, and
+using gradients to update parameters.
+
+TOPIC: Python
+
+Python is a general-purpose programming language.
+
+Variables hold references to values.
+
+Functions allow reusable operations to be defined.
+
+Classes provide a mechanism for organizing data and behavior.
+
+Lists are ordered mutable collections.
+
+Tuples are ordered immutable collections.
+
+Dictionaries store key-value associations.
+
+Sets store unique elements.
+
+A Python program can be divided into modules and packages.
+
+Exceptions provide a mechanism for handling errors.
+
+The Python interpreter executes Python programs.
+
+TOPIC: Neural Networks
+
+A neural network transforms input representations through a sequence of
+mathematical operations.
+
+A linear layer performs a matrix multiplication followed by an optional
+bias addition.
+
+An activation function introduces nonlinearity.
+
+ReLU, GELU, sigmoid, and tanh are examples of activation functions.
+
+A loss function measures how different a model prediction is from a target.
+
+Backpropagation calculates gradients of the loss with respect to model
+parameters.
+
+An optimizer uses those gradients to update parameters.
+
+Adam and AdamW are commonly used optimizers for neural network training.
+
+TOPIC: Transformers
+
+A Transformer processes sequences using attention and feed-forward layers.
+
+Self-attention allows each token representation to interact with other
+tokens in the sequence.
+
+Queries, keys, and values are used to calculate attention.
+
+Attention scores are commonly scaled by the square root of the key
+dimension.
+
+Softmax converts attention scores into normalized weights.
+
+Multi-head attention performs several attention operations in parallel.
+
+Residual connections help information flow through deep networks.
+
+Layer normalization stabilizes neural network computation.
+
+A causal language model prevents a token from attending to future tokens.
+
+GPT-style models are autoregressive causal language models.
+
+TOPIC: Training
+
+Training a neural network means optimizing its parameters using data.
+
+A batch is a collection of training examples processed together.
+
+An epoch represents a complete pass through a dataset.
+
+The learning rate controls the size of parameter updates.
+
+Weight decay can regularize model parameters.
+
+Gradient clipping limits excessively large gradients.
+
+A validation set can be used to measure performance on data not directly
+used for parameter updates.
+
+Overfitting occurs when a model becomes excessively specialized to its
+training examples.
+
+Underfitting occurs when a model is unable to capture important patterns
+in its training data.
+
