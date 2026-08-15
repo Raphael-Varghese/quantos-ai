@@ -120,3 +120,226 @@ def factorial(n):
 
 <end>
 
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python string?
+
+<assistant>
+
+A string is a sequence of characters represented by the str type.
+
+For example:
+
+name = "Mosaic"
+
+Strings can be indexed and sliced:
+
+first = name[0]
+part = name[0:3]
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python integer?
+
+<assistant>
+
+An integer is a whole-number value represented by the int type.
+
+Examples include:
+
+x = 10
+y = -5
+z = 0
+
+Python integers can represent arbitrarily large whole numbers subject to
+available memory.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Boolean in Python?
+
+<assistant>
+
+A Boolean represents a true or false value.
+
+Python uses the bool type with the values True and False.
+
+For example:
+
+is_ready = True
+is_finished = False
+
+Boolean expressions are commonly used in conditions.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How does an if statement work in Python?
+
+<assistant>
+
+An if statement runs a block of code when a condition is true.
+
+For example:
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")
+
+Python uses indentation to define the blocks controlled by the condition.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a list comprehension?
+
+<assistant>
+
+A list comprehension is a compact way to construct a list from an iterable.
+
+For example:
+
+squares = [x * x for x in range(5)]
+
+This creates a list containing the squares of the values from 0 through 4.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the difference between a list and a tuple?
+
+<assistant>
+
+Both lists and tuples are ordered collections.
+
+Lists are mutable, so their contents can be changed after creation.
+
+Tuples are generally immutable after creation.
+
+For example:
+
+numbers = [1, 2, 3]
+point = (10, 20)
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you define a class in Python?
+
+<assistant>
+
+A class defines a type that can combine data and behavior.
+
+For example:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f"Hello, {self.name}"
+
+An object can then be created from the class.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python module?
+
+<assistant>
+
+A module is a Python file containing code such as functions, classes, and
+variables.
+
+For example, if math_utils.py contains a function called add, another file
+can import it:
+
+from math_utils import add
+
+Modules help organize code into reusable components.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python dictionary comprehension?
+
+<assistant>
+
+A dictionary comprehension creates a dictionary from an iterable.
+
+For example:
+
+squares = {x: x * x for x in range(5)}
+
+The resulting dictionary maps each number to its square.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What does enumerate do in Python?
+
+<assistant>
+
+enumerate returns an iterable that provides both an index and an item.
+
+For example:
+
+for index, value in enumerate(["a", "b", "c"]):
+    print(index, value)
+
+This is useful when a loop needs both the position and the value.
+
+
+<end>
+

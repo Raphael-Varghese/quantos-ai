@@ -44,3 +44,78 @@ inference the trained weights are used to produce predictions.
 
 <end>
 
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Python lists cannot be changed after they are created.
+
+<assistant>
+
+That is incorrect. Python lists are mutable.
+
+For example:
+
+numbers = [1, 2, 3]
+numbers.append(4)
+
+The list now contains four elements.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A Python tuple is always completely immutable in every sense.
+
+<assistant>
+
+A tuple itself is immutable, meaning its elements cannot be replaced through
+normal tuple assignment.
+
+However, a tuple can contain mutable objects such as lists, and those objects
+may still be modified.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A validation set is used to update model weights directly.
+
+<assistant>
+
+Normally, validation data is used to evaluate the model rather than directly
+update its parameters.
+
+Training data is used for parameter updates. Validation results can help
+monitor generalization and guide training decisions.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+More training always makes a neural network better.
+
+<assistant>
+
+Not necessarily. Training for too long on limited data can lead to
+overfitting.
+
+Model performance depends on factors including the data, architecture,
+optimization, regularization, and training duration.
+
+
+<end>
+

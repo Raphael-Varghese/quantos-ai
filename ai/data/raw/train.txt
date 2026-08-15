@@ -3,56 +3,16 @@
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-How do you handle errors in Python?
+Why does this code produce a TypeError? 5 + '3'
 
 <assistant>
 
-Python uses try and except blocks to handle exceptions.
+The expression attempts to add an integer and a string.
 
-Example:
+Python does not automatically combine these two different types with the +
+operator.
 
-try:
-    value = int(text)
-except ValueError:
-    print("Invalid number")
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-Why does this Python code fail? x = 10 / 0
-
-<assistant>
-
-The expression attempts to divide by zero. Python raises a ZeroDivisionError
-because division by zero is undefined.
-
-You can prevent the exception by checking the denominator before performing
-the division or by handling the exception appropriately.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-What is a Python variable?
-
-<assistant>
-
-A Python variable is a name that refers to an object.
-
-For example:
-
-x = 10
-
-Here, x refers to the integer value 10.
+Convert the values to compatible types depending on the intended operation.
 
 
 <end>
@@ -77,12 +37,23 @@ def add(a, b):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is self-attention?
+A number is increased from 50 to 65. What is the percentage increase?
 
 <assistant>
 
-Self-attention allows each position in a sequence to use information from
-other positions when computing its representation.
+The increase is:
+
+65 - 50 = 15.
+
+Divide the increase by the original value:
+
+15 / 50 = 0.3.
+
+Convert to a percentage:
+
+0.3 × 100 = 30 percent.
+
+Therefore, the percentage increase is 30 percent.
 
 
 <end>
@@ -92,15 +63,15 @@ other positions when computing its representation.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-A box contains 6 groups of 7 objects. How many objects are there?
+Explain attention simply.
 
 <assistant>
 
-There are 6 groups and each group contains 7 objects.
+Attention allows a model to determine which parts of the available context
+are important when computing a representation.
 
-6 × 7 = 42.
-
-Therefore, there are 42 objects.
+In a language model, attention helps tokens use information from relevant
+other tokens in the context.
 
 
 <end>
@@ -110,12 +81,15 @@ Therefore, there are 42 objects.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Inference updates the model weights every time.
+What is the median of 2, 4, 7, 9, and 12?
 
 <assistant>
 
-Normally, inference does not update the model's learned parameters. During
-inference the trained weights are used to produce predictions.
+The values are already ordered.
+
+There are five values, so the middle value is the third value.
+
+The median is 7.
 
 
 <end>
@@ -125,19 +99,35 @@ inference the trained weights are used to produce predictions.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-How do you write a loop in Python?
+Explain a tokenizer simply.
 
 <assistant>
 
-A for loop can iterate over the elements of a sequence.
+A tokenizer converts text into smaller units called tokens.
+
+A language model can then convert those tokens into numerical IDs and process
+them with a neural network.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you handle errors in Python?
+
+<assistant>
+
+Python uses try and except blocks to handle exceptions.
 
 Example:
 
-for number in numbers:
-    print(number)
-
-Python also provides while loops for repeating code while a condition
-remains true.
+try:
+    value = int(text)
+except ValueError:
+    print("Invalid number")
 
 
 <end>
@@ -147,14 +137,40 @@ remains true.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is a prime number?
+What is the median of 2, 4, 7, 9, and 12?
 
 <assistant>
 
-A prime number is an integer greater than 1 that has exactly two positive
-divisors: 1 and itself.
+The values are already ordered.
 
-Examples include 2, 3, 5, 7, and 11.
+There are five values, so the middle value is the third value.
+
+The median is 7.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you define a class in Python?
+
+<assistant>
+
+A class defines a type that can combine data and behavior.
+
+For example:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f"Hello, {self.name}"
+
+An object can then be created from the class.
 
 
 <end>
@@ -181,12 +197,20 @@ does not generalize well.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is overfitting?
+How does an if statement work in Python?
 
 <assistant>
 
-Overfitting occurs when a model learns the training data too specifically
-and performs worse on examples it has not seen during training.
+An if statement runs a block of code when a condition is true.
+
+For example:
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")
+
+Python uses indentation to define the blocks controlled by the condition.
 
 
 <end>
@@ -196,12 +220,17 @@ and performs worse on examples it has not seen during training.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is deep learning?
+Solve x + 7 = 12.
 
 <assistant>
 
-Deep learning is a type of machine learning based on neural networks with
-multiple computational layers.
+Subtract 7 from both sides:
+
+x + 7 - 7 = 12 - 7
+
+x = 5.
+
+Therefore, x is 5.
 
 
 <end>
@@ -211,13 +240,17 @@ multiple computational layers.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Why does Python raise an IndexError when accessing list[10]?
+What is a Python dictionary comprehension?
 
 <assistant>
 
-An IndexError occurs when you try to access a list position that does not
-exist. If a list contains fewer than 11 elements, index 10 is outside the
-valid range.
+A dictionary comprehension creates a dictionary from an iterable.
+
+For example:
+
+squares = {x: x * x for x in range(5)}
+
+The resulting dictionary maps each number to its square.
 
 
 <end>
@@ -227,13 +260,74 @@ valid range.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is a language model?
+What is the perimeter of a rectangle with length 8 and width 5?
 
 <assistant>
 
-A language model learns statistical relationships between tokens and can
-assign probabilities to possible sequences. An autoregressive language model
-can generate text by predicting one token at a time.
+The perimeter of a rectangle is:
+
+2 × (length + width)
+
+2 × (8 + 5) = 26.
+
+Therefore, the perimeter is 26 units.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 144 divided by 12?
+
+<assistant>
+
+144 ÷ 12 = 12.
+
+Therefore, the answer is 12.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the area of a rectangle with length 8 and width 5?
+
+<assistant>
+
+The area of a rectangle is:
+
+area = length × width
+
+8 × 5 = 40.
+
+Therefore, the area is 40 square units.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you read a file in Python?
+
+<assistant>
+
+The with statement can be used to safely open a file.
+
+Example:
+
+with open("file.txt", "r", encoding="utf-8") as file:
+    text = file.read()
+
+The file is automatically closed when the with block finishes.
 
 
 <end>
@@ -265,123 +359,13 @@ Therefore, the mean is 5.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is machine learning?
+What is a language model?
 
 <assistant>
 
-Machine learning is a branch of artificial intelligence in which models
-learn patterns from data rather than being explicitly programmed with every
-rule needed to perform a task.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-What is a Python list?
-
-<assistant>
-
-A Python list is an ordered, mutable collection.
-
-For example:
-
-numbers = [1, 2, 3]
-
-You can modify a list after creating it:
-
-numbers.append(4)
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-Write a Python function that checks whether a number is even.
-
-<assistant>
-
-def is_even(number):
-    return number % 2 == 0
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-A program processes 50 records in 5 seconds. How many records can it process in 20 seconds at the same rate?
-
-<assistant>
-
-20 seconds is four times 5 seconds.
-
-50 × 4 = 200.
-
-Therefore, the program can process approximately 200 records in 20 seconds
-under the stated constant-rate assumption.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-What is 25 percent of 200?
-
-<assistant>
-
-25 percent is 0.25.
-
-0.25 × 200 = 50.
-
-Therefore, 25 percent of 200 is 50.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-How do you read a file in Python?
-
-<assistant>
-
-The with statement can be used to safely open a file.
-
-Example:
-
-with open("file.txt", "r", encoding="utf-8") as file:
-    text = file.read()
-
-The file is automatically closed when the with block finishes.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-What is a neural network?
-
-<assistant>
-
-A neural network is a mathematical model composed of layers of learned
-parameters that transform input representations.
+A language model learns statistical relationships between tokens and can
+assign probabilities to possible sequences. An autoregressive language model
+can generate text by predicting one token at a time.
 
 
 <end>
@@ -435,6 +419,238 @@ def find_largest(numbers):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
+What is the area of a rectangle with length 8 and width 5?
+
+<assistant>
+
+The area of a rectangle is:
+
+area = length × width
+
+8 × 5 = 40.
+
+Therefore, the area is 40 square units.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain recursion simply.
+
+<assistant>
+
+Recursion is a programming technique in which a function calls itself on a
+smaller version of a problem. A recursive function needs a base case that
+stops the recursion.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the probability of getting heads when flipping a fair coin?
+
+<assistant>
+
+A fair coin has two equally likely outcomes: heads and tails.
+
+The probability of heads is:
+
+1 / 2 = 0.5
+
+Therefore, the probability is 1/2, or 50 percent.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python string?
+
+<assistant>
+
+A string is a sequence of characters represented by the str type.
+
+For example:
+
+name = "Mosaic"
+
+Strings can be indexed and sliced:
+
+first = name[0]
+part = name[0:3]
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+More training always makes a neural network better.
+
+<assistant>
+
+Not necessarily. Training for too long on limited data can lead to
+overfitting.
+
+Model performance depends on factors including the data, architecture,
+optimization, regularization, and training duration.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python tuple?
+
+<assistant>
+
+A tuple is an ordered collection that is generally immutable after it is
+created.
+
+For example:
+
+point = (10, 20)
+
+Tuples are useful for representing fixed collections of values.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is overfitting?
+
+<assistant>
+
+Overfitting occurs when a model learns the training data too specifically
+and performs worse on examples it has not seen during training.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python integer?
+
+<assistant>
+
+An integer is a whole-number value represented by the int type.
+
+Examples include:
+
+x = 10
+y = -5
+z = 0
+
+Python integers can represent arbitrarily large whole numbers subject to
+available memory.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you define a class in Python?
+
+<assistant>
+
+A class defines a type that can combine data and behavior.
+
+For example:
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f"Hello, {self.name}"
+
+An object can then be created from the class.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Python is exactly the same as C.
+
+<assistant>
+
+Python and C are different programming languages with different designs,
+syntax, type systems, and typical implementation strategies.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain a variable simply.
+
+<assistant>
+
+A variable is a name that refers to a value or object.
+
+For example:
+
+age = 13
+
+Here, age is the variable name and 13 is the value it refers to.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is machine learning?
+
+<assistant>
+
+Machine learning is a branch of artificial intelligence in which models
+learn patterns from data rather than being explicitly programmed with every
+rule needed to perform a task.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
 What is a Python function?
 
 <assistant>
@@ -456,12 +672,35 @@ The function accepts two arguments and returns their sum.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is a Transformer?
+What is a list comprehension?
 
 <assistant>
 
-A Transformer is a neural network architecture that uses attention
-mechanisms to process relationships between elements in a sequence.
+A list comprehension is a compact way to construct a list from an iterable.
+
+For example:
+
+squares = [x * x for x in range(5)]
+
+This creates a list containing the squares of the values from 0 through 4.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 15 percent of 80?
+
+<assistant>
+
+15 percent is 0.15.
+
+0.15 × 80 = 12.
+
+Therefore, 15 percent of 80 is 12.
 
 
 <end>
@@ -496,36 +735,6 @@ person["name"]
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Python is exactly the same as C.
-
-<assistant>
-
-Python and C are different programming languages with different designs,
-syntax, type systems, and typical implementation strategies.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-Explain a database simply.
-
-<assistant>
-
-A database is a system for storing and organizing data so that applications
-can efficiently create, retrieve, update, and manage that data.
-
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
 What is gradient descent?
 
 <assistant>
@@ -541,12 +750,12 @@ direction intended to reduce the value of a loss function.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Write a Python function that counts the words in a string.
+Explain an API simply.
 
 <assistant>
 
-def count_words(text):
-    return len(text.split())
+An API is an interface that allows different software components to
+communicate using defined operations and data formats.
 
 
 <end>
@@ -556,13 +765,144 @@ def count_words(text):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is 144 divided by 12?
+What is 25 percent of 200?
 
 <assistant>
 
-144 ÷ 12 = 12.
+25 percent is 0.25.
 
-Therefore, the answer is 12.
+0.25 × 200 = 50.
+
+Therefore, 25 percent of 200 is 50.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is deep learning?
+
+<assistant>
+
+Deep learning is a type of machine learning based on neural networks with
+multiple computational layers.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Transformer?
+
+<assistant>
+
+A Transformer is a neural network architecture that uses attention
+mechanisms to process relationships between elements in a sequence.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python module?
+
+<assistant>
+
+A module is a Python file containing code such as functions, classes, and
+variables.
+
+For example, if math_utils.py contains a function called add, another file
+can import it:
+
+from math_utils import add
+
+Modules help organize code into reusable components.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python string?
+
+<assistant>
+
+A string is a sequence of characters represented by the str type.
+
+For example:
+
+name = "Mosaic"
+
+Strings can be indexed and sliced:
+
+first = name[0]
+part = name[0:3]
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Inference updates the model weights every time.
+
+<assistant>
+
+Normally, inference does not update the model's learned parameters. During
+inference the trained weights are used to produce predictions.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a good first step when debugging an unfamiliar error?
+
+<assistant>
+
+Start by reading the error message and traceback carefully.
+
+Identify the exception type, the line where it occurred, and the values or
+assumptions involved.
+
+Then reduce the problem to the smallest reproducible example you can create.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What should you do when a programming problem has multiple possible interpretations?
+
+<assistant>
+
+First identify the ambiguity and determine whether it changes the result.
+
+If the intended interpretation is clear from the context, state the
+assumption and proceed.
+
+If the ambiguity materially affects the answer and cannot be resolved from
+the available information, ask a concise clarification question.
 
 
 <end>
@@ -587,13 +927,15 @@ def square(number):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Explain recursion simply.
+Why does this Python code fail? x = 10 / 0
 
 <assistant>
 
-Recursion is a programming technique in which a function calls itself on a
-smaller version of a problem. A recursive function needs a base case that
-stops the recursion.
+The expression attempts to divide by zero. Python raises a ZeroDivisionError
+because division by zero is undefined.
+
+You can prevent the exception by checking the denominator before performing
+the division or by handling the exception appropriately.
 
 
 <end>
@@ -603,13 +945,167 @@ stops the recursion.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is 5 times 8?
+What does enumerate do in Python?
 
 <assistant>
 
-5 × 8 = 40.
+enumerate returns an iterable that provides both an index and an item.
 
-Therefore, the answer is 40.
+For example:
+
+for index, value in enumerate(["a", "b", "c"]):
+    print(index, value)
+
+This is useful when a loop needs both the position and the value.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A box contains 6 groups of 7 objects. How many objects are there?
+
+<assistant>
+
+There are 6 groups and each group contains 7 objects.
+
+6 × 7 = 42.
+
+Therefore, there are 42 objects.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is self-attention?
+
+<assistant>
+
+Self-attention allows each position in a sequence to use information from
+other positions when computing its representation.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Write a Python function that checks whether a number is even.
+
+<assistant>
+
+def is_even(number):
+    return number % 2 == 0
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Solve 3x = 21.
+
+<assistant>
+
+Divide both sides by 3:
+
+3x / 3 = 21 / 3
+
+x = 7.
+
+Therefore, x is 7.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does Python raise an IndexError when accessing list[10]?
+
+<assistant>
+
+An IndexError occurs when you try to access a list position that does not
+exist. If a list contains fewer than 11 elements, index 10 is outside the
+valid range.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python list?
+
+<assistant>
+
+A Python list is an ordered, mutable collection.
+
+For example:
+
+numbers = [1, 2, 3]
+
+You can modify a list after creating it:
+
+numbers.append(4)
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Solve x + 7 = 12.
+
+<assistant>
+
+Subtract 7 from both sides:
+
+x + 7 - 7 = 12 - 7
+
+x = 5.
+
+Therefore, x is 5.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the difference between a list and a tuple?
+
+<assistant>
+
+Both lists and tuples are ordered collections.
+
+Lists are mutable, so their contents can be changed after creation.
+
+Tuples are generally immutable after creation.
+
+For example:
+
+numbers = [1, 2, 3]
+point = (10, 20)
 
 
 <end>
@@ -634,18 +1130,17 @@ def reverse_string(text):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is a Python tuple?
+Solve 3x = 21.
 
 <assistant>
 
-A tuple is an ordered collection that is generally immutable after it is
-created.
+Divide both sides by 3:
 
-For example:
+3x / 3 = 21 / 3
 
-point = (10, 20)
+x = 7.
 
-Tuples are useful for representing fixed collections of values.
+Therefore, x is 7.
 
 
 <end>
@@ -655,13 +1150,66 @@ Tuples are useful for representing fixed collections of values.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-A Transformer is not a neural network.
+If a train travels 60 kilometers in 2 hours at a constant speed, how far will it travel in 5 hours?
 
 <assistant>
 
-That is incorrect. A Transformer is a neural network architecture built from
-components including attention, feed-forward networks, normalization, and
-residual connections.
+The train travels 60 kilometers in 2 hours.
+
+Its speed is:
+
+60 ÷ 2 = 30 kilometers per hour.
+
+In 5 hours it will travel:
+
+30 × 5 = 150 kilometers.
+
+Therefore, it will travel 150 kilometers.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain a loop simply.
+
+<assistant>
+
+A loop repeats a block of code.
+
+For example, a for loop can process every item in a list:
+
+for item in items:
+    print(item)
+
+Loops are useful when the same operation needs to be performed multiple
+times.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Boolean in Python?
+
+<assistant>
+
+A Boolean represents a true or false value.
+
+Python uses the bool type with the values True and False.
+
+For example:
+
+is_ready = True
+is_finished = False
+
+Boolean expressions are commonly used in conditions.
 
 
 <end>
@@ -694,6 +1242,136 @@ def factorial(n):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
+Explain a database simply.
+
+<assistant>
+
+A database is a system for storing and organizing data so that applications
+can efficiently create, retrieve, update, and manage that data.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python module?
+
+<assistant>
+
+A module is a Python file containing code such as functions, classes, and
+variables.
+
+For example, if math_utils.py contains a function called add, another file
+can import it:
+
+from math_utils import add
+
+Modules help organize code into reusable components.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the perimeter of a rectangle with length 8 and width 5?
+
+<assistant>
+
+The perimeter of a rectangle is:
+
+2 × (length + width)
+
+2 × (8 + 5) = 26.
+
+Therefore, the perimeter is 26 units.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python variable?
+
+<assistant>
+
+A Python variable is a name that refers to an object.
+
+For example:
+
+x = 10
+
+Here, x refers to the integer value 10.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a list comprehension?
+
+<assistant>
+
+A list comprehension is a compact way to construct a list from an iterable.
+
+For example:
+
+squares = [x * x for x in range(5)]
+
+This creates a list containing the squares of the values from 0 through 4.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a neural network?
+
+<assistant>
+
+A neural network is a mathematical model composed of layers of learned
+parameters that transform input representations.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A Python tuple is always completely immutable in every sense.
+
+<assistant>
+
+A tuple itself is immutable, meaning its elements cannot be replaced through
+normal tuple assignment.
+
+However, a tuple can contain mutable objects such as lists, and those objects
+may still be modified.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
 Why does a Python function return None when I expected a value?
 
 <assistant>
@@ -716,12 +1394,424 @@ The function calculates the result but never returns it.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Explain an API simply.
+Why does this Python function produce the wrong result? def add(a, b): print(a + b)
 
 <assistant>
 
-An API is an interface that allows different software components to
-communicate using defined operations and data formats.
+The function prints the result but does not return it.
+
+If the caller expects a value, the function should use return:
+
+def add(a, b):
+    return a + b
+
+Then the result can be stored or used by the calling code.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How does an if statement work in Python?
+
+<assistant>
+
+An if statement runs a block of code when a condition is true.
+
+For example:
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")
+
+Python uses indentation to define the blocks controlled by the condition.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A program processes 50 records in 5 seconds. How many records can it process in 20 seconds at the same rate?
+
+<assistant>
+
+20 seconds is four times 5 seconds.
+
+50 × 4 = 200.
+
+Therefore, the program can process approximately 200 records in 20 seconds
+under the stated constant-rate assumption.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 15 percent of 80?
+
+<assistant>
+
+15 percent is 0.15.
+
+0.15 × 80 = 12.
+
+Therefore, 15 percent of 80 is 12.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 5 times 8?
+
+<assistant>
+
+5 × 8 = 40.
+
+Therefore, the answer is 40.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a prime number?
+
+<assistant>
+
+A prime number is an integer greater than 1 that has exactly two positive
+divisors: 1 and itself.
+
+Examples include 2, 3, 5, 7, and 11.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the probability of getting heads when flipping a fair coin?
+
+<assistant>
+
+A fair coin has two equally likely outcomes: heads and tails.
+
+The probability of heads is:
+
+1 / 2 = 0.5
+
+Therefore, the probability is 1/2, or 50 percent.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A validation set is used to update model weights directly.
+
+<assistant>
+
+Normally, validation data is used to evaluate the model rather than directly
+update its parameters.
+
+Training data is used for parameter updates. Validation results can help
+monitor generalization and guide training decisions.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Boolean in Python?
+
+<assistant>
+
+A Boolean represents a true or false value.
+
+Python uses the bool type with the values True and False.
+
+For example:
+
+is_ready = True
+is_finished = False
+
+Boolean expressions are commonly used in conditions.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What does enumerate do in Python?
+
+<assistant>
+
+enumerate returns an iterable that provides both an index and an item.
+
+For example:
+
+for index, value in enumerate(["a", "b", "c"]):
+    print(index, value)
+
+This is useful when a loop needs both the position and the value.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Write a Python function that counts the words in a string.
+
+<assistant>
+
+def count_words(text):
+    return len(text.split())
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain training versus inference simply.
+
+<assistant>
+
+Training is when a model's parameters are adjusted using examples and a
+loss.
+
+Inference is when the trained model is used to produce outputs for new
+inputs without normally changing its parameters.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Python lists cannot be changed after they are created.
+
+<assistant>
+
+That is incorrect. Python lists are mutable.
+
+For example:
+
+numbers = [1, 2, 3]
+numbers.append(4)
+
+The list now contains four elements.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python dictionary comprehension?
+
+<assistant>
+
+A dictionary comprehension creates a dictionary from an iterable.
+
+For example:
+
+squares = {x: x * x for x in range(5)}
+
+The resulting dictionary maps each number to its square.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python integer?
+
+<assistant>
+
+An integer is a whole-number value represented by the int type.
+
+Examples include:
+
+x = 10
+y = -5
+z = 0
+
+Python integers can represent arbitrarily large whole numbers subject to
+available memory.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you write a loop in Python?
+
+<assistant>
+
+A for loop can iterate over the elements of a sequence.
+
+Example:
+
+for number in numbers:
+    print(number)
+
+Python also provides while loops for repeating code while a condition
+remains true.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this Python code fail? print(name) when name was never defined.
+
+<assistant>
+
+Python raises a NameError because the name variable does not exist in the
+current scope.
+
+Define the variable before using it, or correct the variable name if a
+different variable was intended.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this Python code fail? numbers = [1, 2, 3]; print(numbers[3])
+
+<assistant>
+
+The list contains three elements, whose valid indexes are 0, 1, and 2.
+
+Index 3 is outside the valid range, so Python raises an IndexError.
+
+Use a valid index or check the length of the list before accessing an
+element.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the difference between a list and a tuple?
+
+<assistant>
+
+Both lists and tuples are ordered collections.
+
+Lists are mutable, so their contents can be changed after creation.
+
+Tuples are generally immutable after creation.
+
+For example:
+
+numbers = [1, 2, 3]
+point = (10, 20)
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain an exception simply.
+
+<assistant>
+
+An exception is an event that indicates something went wrong while a program
+was running.
+
+Python can handle exceptions with constructs such as try and except.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why can a program produce different results when randomness is involved?
+
+<assistant>
+
+A program may produce different results when it uses random choices.
+
+If the random generator is not given a fixed seed, different executions can
+produce different random sequences.
+
+A fixed seed can make many pseudorandom processes reproducible.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A Transformer is not a neural network.
+
+<assistant>
+
+That is incorrect. A Transformer is a neural network architecture built from
+components including attention, feed-forward networks, normalization, and
+residual connections.
 
 
 <end>

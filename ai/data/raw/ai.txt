@@ -120,3 +120,139 @@ and performs worse on examples it has not seen during training.
 
 <end>
 
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is 15 percent of 80?
+
+<assistant>
+
+15 percent is 0.15.
+
+0.15 × 80 = 12.
+
+Therefore, 15 percent of 80 is 12.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the area of a rectangle with length 8 and width 5?
+
+<assistant>
+
+The area of a rectangle is:
+
+area = length × width
+
+8 × 5 = 40.
+
+Therefore, the area is 40 square units.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the perimeter of a rectangle with length 8 and width 5?
+
+<assistant>
+
+The perimeter of a rectangle is:
+
+2 × (length + width)
+
+2 × (8 + 5) = 26.
+
+Therefore, the perimeter is 26 units.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Solve x + 7 = 12.
+
+<assistant>
+
+Subtract 7 from both sides:
+
+x + 7 - 7 = 12 - 7
+
+x = 5.
+
+Therefore, x is 5.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Solve 3x = 21.
+
+<assistant>
+
+Divide both sides by 3:
+
+3x / 3 = 21 / 3
+
+x = 7.
+
+Therefore, x is 7.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the probability of getting heads when flipping a fair coin?
+
+<assistant>
+
+A fair coin has two equally likely outcomes: heads and tails.
+
+The probability of heads is:
+
+1 / 2 = 0.5
+
+Therefore, the probability is 1/2, or 50 percent.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the median of 2, 4, 7, 9, and 12?
+
+<assistant>
+
+The values are already ordered.
+
+There are five values, so the middle value is the third value.
+
+The median is 7.
+
+
+<end>
+

@@ -54,3 +54,99 @@ The function calculates the result but never returns it.
 
 <end>
 
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this Python code fail? numbers = [1, 2, 3]; print(numbers[3])
+
+<assistant>
+
+The list contains three elements, whose valid indexes are 0, 1, and 2.
+
+Index 3 is outside the valid range, so Python raises an IndexError.
+
+Use a valid index or check the length of the list before accessing an
+element.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this Python code fail? print(name) when name was never defined.
+
+<assistant>
+
+Python raises a NameError because the name variable does not exist in the
+current scope.
+
+Define the variable before using it, or correct the variable name if a
+different variable was intended.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this code produce a TypeError? 5 + '3'
+
+<assistant>
+
+The expression attempts to add an integer and a string.
+
+Python does not automatically combine these two different types with the +
+operator.
+
+Convert the values to compatible types depending on the intended operation.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this Python function produce the wrong result? def add(a, b): print(a + b)
+
+<assistant>
+
+The function prints the result but does not return it.
+
+If the caller expects a value, the function should use return:
+
+def add(a, b):
+    return a + b
+
+Then the result can be stored or used by the calling code.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a good first step when debugging an unfamiliar error?
+
+<assistant>
+
+Start by reading the error message and traceback carefully.
+
+Identify the exception type, the line where it occurred, and the values or
+assumptions involved.
+
+Then reduce the problem to the smallest reproducible example you can create.
+
+
+<end>
+

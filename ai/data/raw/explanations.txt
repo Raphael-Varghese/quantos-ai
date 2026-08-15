@@ -44,3 +44,115 @@ can efficiently create, retrieve, update, and manage that data.
 
 <end>
 
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain a variable simply.
+
+<assistant>
+
+A variable is a name that refers to a value or object.
+
+For example:
+
+age = 13
+
+Here, age is the variable name and 13 is the value it refers to.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain a loop simply.
+
+<assistant>
+
+A loop repeats a block of code.
+
+For example, a for loop can process every item in a list:
+
+for item in items:
+    print(item)
+
+Loops are useful when the same operation needs to be performed multiple
+times.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain an exception simply.
+
+<assistant>
+
+An exception is an event that indicates something went wrong while a program
+was running.
+
+Python can handle exceptions with constructs such as try and except.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain training versus inference simply.
+
+<assistant>
+
+Training is when a model's parameters are adjusted using examples and a
+loss.
+
+Inference is when the trained model is used to produce outputs for new
+inputs without normally changing its parameters.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain a tokenizer simply.
+
+<assistant>
+
+A tokenizer converts text into smaller units called tokens.
+
+A language model can then convert those tokens into numerical IDs and process
+them with a neural network.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain attention simply.
+
+<assistant>
+
+Attention allows a model to determine which parts of the available context
+are important when computing a representation.
+
+In a language model, attention helps tokens use information from relevant
+other tokens in the context.
+
+
+<end>
+

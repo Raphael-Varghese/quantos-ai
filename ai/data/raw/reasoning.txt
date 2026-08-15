@@ -52,3 +52,92 @@ does not generalize well.
 
 <end>
 
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+If a train travels 60 kilometers in 2 hours at a constant speed, how far will it travel in 5 hours?
+
+<assistant>
+
+The train travels 60 kilometers in 2 hours.
+
+Its speed is:
+
+60 ÷ 2 = 30 kilometers per hour.
+
+In 5 hours it will travel:
+
+30 × 5 = 150 kilometers.
+
+Therefore, it will travel 150 kilometers.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+A number is increased from 50 to 65. What is the percentage increase?
+
+<assistant>
+
+The increase is:
+
+65 - 50 = 15.
+
+Divide the increase by the original value:
+
+15 / 50 = 0.3.
+
+Convert to a percentage:
+
+0.3 × 100 = 30 percent.
+
+Therefore, the percentage increase is 30 percent.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why can a program produce different results when randomness is involved?
+
+<assistant>
+
+A program may produce different results when it uses random choices.
+
+If the random generator is not given a fixed seed, different executions can
+produce different random sequences.
+
+A fixed seed can make many pseudorandom processes reproducible.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What should you do when a programming problem has multiple possible interpretations?
+
+<assistant>
+
+First identify the ambiguity and determine whether it changes the result.
+
+If the intended interpretation is clear from the context, state the
+assumption and proceed.
+
+If the ambiguity materially affects the answer and cannot be resolved from
+the available information, ask a concise clarification question.
+
+
+<end>
+
