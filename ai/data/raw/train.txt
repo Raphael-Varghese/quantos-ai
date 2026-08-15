@@ -1,0 +1,19 @@
+The artificial intelligence was created to learn from examples.
+
+Neural networks are mathematical models that learn patterns from data.
+
+A transformer is a neural network architecture based on attention.
+
+Machine learning allows computers to learn relationships between inputs and outputs.
+
+The model reads a sequence of tokens and predicts what token should come next.
+
+Artificial intelligence can be used to understand language, generate text, analyze information, and solve problems.
+
+The computer does not understand language in the same way that a human does. Instead, the neural network learns statistical patterns in its training data.
+
+Training a neural network involves making predictions, calculating an error, and adjusting the model's parameters to reduce that error.
+
+Deep learning uses many layers of neural network computations.
+
+Attention allows a model to determine which parts of a sequence are important when processing another part of the sequence.
