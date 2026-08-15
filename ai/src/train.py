@@ -24,6 +24,7 @@ from .config import (
 
 from .dataset import TextDataset
 from .model import GPT
+from .subword_tokenizer import SubwordTokenizer
 
 
 # ============================================================
@@ -40,7 +41,9 @@ torch.manual_seed(SEED)
 
 dataset = TextDataset()
 
-vocab_size = dataset.tokenizer.vocab_size
+tokenizer = SubwordTokenizer()
+
+vocab_size = tokenizer.vocab_size
 
 
 # ============================================================
@@ -248,11 +251,8 @@ def save_checkpoint(step):
             "model":
                 model.state_dict(),
 
-            "tokenizer_stoi":
-                dataset.tokenizer.stoi,
-
-            "tokenizer_itos":
-                dataset.tokenizer.itos,
+            "tokenizer_file":
+                "data/processed/tokenizer/tokenizer.json",
 
             "vocab_size":
                 vocab_size,
@@ -264,10 +264,10 @@ def save_checkpoint(step):
                 optimizer.state_dict(),
 
             "config": {
-                "block_size":
-                    dataset.data.shape[0]
-                    if False
-                    else None
+                "block_size": 256,
+                "embedding_size": 256,
+                "num_heads": 4,
+                "num_layers": 4,
             },
 
             "seed":

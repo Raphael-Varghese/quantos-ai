@@ -1,66 +1,79 @@
+import numpy as np
 import torch
 
 from .config import (
-    TRAIN_FILE,
-    TRAIN_SPLIT,
     BLOCK_SIZE,
     BATCH_SIZE,
     DEVICE,
 )
 
-from .tokenizer import CharacterTokenizer
 
+# ============================================================
+# Dataset
+# ============================================================
 
 class TextDataset:
 
     def __init__(self):
 
-        with open(
-            TRAIN_FILE,
-            "r",
-            encoding="utf-8"
-        ) as file:
+        train_path = (
+            "data/processed/train.bin"
+        )
 
-            self.text = file.read()
+        validation_path = (
+            "data/processed/val.bin"
+        )
 
-        if len(self.text) < BLOCK_SIZE * 2:
+        # ----------------------------------------------------
+        # Load binary token data
+        # ----------------------------------------------------
+
+        self.train_data = torch.from_numpy(
+            np.fromfile(
+                train_path,
+                dtype=np.uint16
+            ).astype(np.int64)
+        )
+
+        self.validation_data = torch.from_numpy(
+            np.fromfile(
+                validation_path,
+                dtype=np.uint16
+            ).astype(np.int64)
+        )
+
+        # ----------------------------------------------------
+        # Validate dataset size
+        # ----------------------------------------------------
+
+        minimum_tokens = (
+            BLOCK_SIZE + 1
+        )
+
+        if len(self.train_data) < minimum_tokens:
 
             raise ValueError(
-                "Your training file is too small. "
-                f"Add at least {BLOCK_SIZE * 2} characters."
+                "Training dataset is too small. "
+                f"Need at least {minimum_tokens} "
+                f"tokens, got {len(self.train_data)}."
             )
 
-        self.tokenizer = CharacterTokenizer(
-            self.text
-        )
+        if len(self.validation_data) < minimum_tokens:
 
-        encoded = self.tokenizer.encode(
-            self.text
-        )
+            raise ValueError(
+                "Validation dataset is too small. "
+                f"Need at least {minimum_tokens} "
+                f"tokens, got "
+                f"{len(self.validation_data)}."
+            )
 
-        self.data = torch.tensor(
-            encoded,
-            dtype=torch.long
-        )
-
-        split = int(
-            len(self.data) * TRAIN_SPLIT
-        )
-
-        self.train_data = self.data[:split]
-
-        self.validation_data = self.data[split:]
+        # ----------------------------------------------------
+        # Information
+        # ----------------------------------------------------
 
         print(
-            f"Characters: {len(self.text):,}"
-        )
-
-        print(
-            f"Vocabulary: {self.tokenizer.vocab_size:,}"
-        )
-
-        print(
-            f"Training tokens: {len(self.train_data):,}"
+            f"Training tokens: "
+            f"{len(self.train_data):,}"
         )
 
         print(
@@ -68,18 +81,34 @@ class TextDataset:
             f"{len(self.validation_data):,}"
         )
 
+    # ========================================================
+    # Batch
+    # ========================================================
+
     def get_batch(self, split):
 
         if split == "train":
 
             data = self.train_data
 
-        else:
+        elif split == "validation":
 
             data = self.validation_data
 
+        else:
+
+            raise ValueError(
+                f"Unknown split: {split}"
+            )
+
+        # ----------------------------------------------------
+        # Random positions
+        # ----------------------------------------------------
+
         max_position = (
-            len(data) - BLOCK_SIZE - 1
+            len(data)
+            - BLOCK_SIZE
+            - 1
         )
 
         positions = torch.randint(
@@ -88,13 +117,18 @@ class TextDataset:
             (BATCH_SIZE,)
         )
 
+        # ----------------------------------------------------
+        # Vectorized sequence construction
+        # ----------------------------------------------------
+
         offsets = torch.arange(
             BLOCK_SIZE
         )
 
         indices = (
             positions[:, None]
-            + offsets[None, :]
+            +
+            offsets[None, :]
         )
 
         x = data[
