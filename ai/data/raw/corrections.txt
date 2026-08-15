@@ -3,13 +3,13 @@
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Python is exactly the same as C because both are compiled languages.
+Python is exactly the same as C.
 
 <assistant>
-That statement is not accurate. Python and C have different language
-designs and implementation models. Many Python implementations perform
-compilation or bytecode generation internally, but Python is generally
-described as a high-level language with multiple implementation strategies.
+
+Python and C are different programming languages with different designs,
+syntax, type systems, and typical implementation strategies.
+
 
 <end>
 
@@ -21,9 +21,11 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 A Transformer is not a neural network.
 
 <assistant>
-That statement is incorrect. A Transformer is a neural network architecture.
-It uses components such as attention, feed-forward networks, normalization,
-and residual connections.
+
+That is incorrect. A Transformer is a neural network architecture built from
+components including attention, feed-forward networks, normalization, and
+residual connections.
+
 
 <end>
 
@@ -32,13 +34,13 @@ and residual connections.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Training and inference are exactly the same process.
+Inference updates the model weights every time.
 
 <assistant>
-Training and inference are related but different. During training, model
-parameters are updated using gradients derived from a loss. During inference,
-the trained parameters are normally kept fixed while the model generates
-predictions.
+
+Normally, inference does not update the model's learned parameters. During
+inference the trained weights are used to produce predictions.
+
 
 <end>
 

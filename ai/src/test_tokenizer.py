@@ -7,8 +7,10 @@ tokenizer = SubwordTokenizer()
 
 
 text = (
-    "Write a paragraph about the"
-    " importance of tokenization in natural language."
+    "The quick brown fox jumps over the lazy dog. "
+    "I am a test sentence for the tokenizer. "
+    "This is a longer sentence to test the tokenizer's ability to handle more complex input. "
+    "Let's see how well it performs with this text."
 )
 
 

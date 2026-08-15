@@ -3,28 +3,18 @@
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is Python?
-
-<assistant>
-Python is a general-purpose programming language known for readable syntax
-and a large ecosystem of libraries. It is commonly used for web development,
-automation, scientific computing, data analysis, and artificial intelligence.
-
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
 What is a Python variable?
 
 <assistant>
-A Python variable is a name that refers to an object. For example:
+
+A Python variable is a name that refers to an object.
+
+For example:
 
 x = 10
 
-Here, the name x refers to the integer object 10.
+Here, x refers to the integer value 10.
+
 
 <end>
 
@@ -36,13 +26,38 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 What is a Python list?
 
 <assistant>
-A Python list is an ordered, mutable collection. Lists can contain multiple
-values and can be modified after they are created.
 
-Example:
+A Python list is an ordered, mutable collection.
+
+For example:
 
 numbers = [1, 2, 3]
+
+You can modify a list after creating it:
+
 numbers.append(4)
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python tuple?
+
+<assistant>
+
+A tuple is an ordered collection that is generally immutable after it is
+created.
+
+For example:
+
+point = (10, 20)
+
+Tuples are useful for representing fixed collections of values.
+
 
 <end>
 
@@ -54,18 +69,40 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 What is a Python dictionary?
 
 <assistant>
-A Python dictionary stores associations between keys and values.
 
-Example:
+A dictionary stores key-value associations.
+
+For example:
 
 person = {
     "name": "Alex",
     "age": 25
 }
 
-A value can be accessed using its key:
+You can access a value using its key:
 
 person["name"]
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is a Python set?
+
+<assistant>
+
+A set is a collection of unique elements.
+
+For example:
+
+numbers = {1, 2, 3, 3}
+
+The resulting set contains only one copy of each value.
+
 
 <end>
 
@@ -77,13 +114,16 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 What is a Python function?
 
 <assistant>
-A function is a reusable block of code that can accept inputs and produce
-an output.
 
-Example:
+A function is a reusable block of code.
+
+For example:
 
 def add(a, b):
     return a + b
+
+The function accepts two arguments and returns their sum.
+
 
 <end>
 
@@ -92,9 +132,32 @@ def add(a, b):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-How do I handle an exception in Python?
+How do you write a loop in Python?
 
 <assistant>
+
+A for loop can iterate over the elements of a sequence.
+
+Example:
+
+for number in numbers:
+    print(number)
+
+Python also provides while loops for repeating code while a condition
+remains true.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+How do you handle errors in Python?
+
+<assistant>
+
 Python uses try and except blocks to handle exceptions.
 
 Example:
@@ -104,6 +167,7 @@ try:
 except ValueError:
     print("Invalid number")
 
+
 <end>
 
 <bos>
@@ -111,15 +175,19 @@ except ValueError:
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-How do I read a text file in Python?
+How do you read a file in Python?
 
 <assistant>
-A text file can be opened using the with statement:
+
+The with statement can be used to safely open a file.
+
+Example:
 
 with open("file.txt", "r", encoding="utf-8") as file:
     text = file.read()
 
-The with statement automatically closes the file when the block finishes.
+The file is automatically closed when the with block finishes.
+
 
 <end>
 

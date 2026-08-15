@@ -3,13 +3,16 @@
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Why might a larger model not always perform better?
+A box contains 6 groups of 7 objects. How many objects are there?
 
 <assistant>
-A larger model has more representational capacity, but model size alone
-does not guarantee better performance. Results also depend on data quality,
-data quantity, architecture, optimization, regularization, and training
-compute.
+
+There are 6 groups and each group contains 7 objects.
+
+6 × 7 = 42.
+
+Therefore, there are 42 objects.
+
 
 <end>
 
@@ -18,12 +21,17 @@ compute.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Why is validation data useful?
+A program processes 50 records in 5 seconds. How many records can it process in 20 seconds at the same rate?
 
 <assistant>
-Validation data provides a way to evaluate a model on examples that were not
-used directly for parameter updates. It can reveal whether improvements on
-the training data are also reflected in generalization.
+
+20 seconds is four times 5 seconds.
+
+50 × 4 = 200.
+
+Therefore, the program can process approximately 200 records in 20 seconds
+under the stated constant-rate assumption.
+
 
 <end>
 
@@ -32,26 +40,15 @@ the training data are also reflected in generalization.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Why does a language model need a tokenizer?
+Why might a larger neural network perform worse than a smaller one?
 
 <assistant>
-Neural networks operate on numerical representations. A tokenizer converts
-text into discrete tokens that can then be represented by integer IDs and
-processed by the neural network.
 
-<end>
+Model size is only one factor affecting performance. Data quality,
+optimization, regularization, architecture, and training procedure also
+matter. A larger model can perform poorly if it is trained inadequately or
+does not generalize well.
 
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-What is gradient clipping?
-
-<assistant>
-Gradient clipping limits the magnitude of gradients before an optimizer
-updates model parameters. It can help prevent unstable updates caused by
-very large gradients.
 
 <end>
 

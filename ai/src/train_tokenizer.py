@@ -1,8 +1,9 @@
 from pathlib import Path
 
 from tokenizers import Tokenizer
+from tokenizers.decoders import ByteLevel as ByteLevelDecoder
 from tokenizers.models import BPE
-from tokenizers.pre_tokenizers import ByteLevel
+from tokenizers.pre_tokenizers import ByteLevel as ByteLevelPreTokenizer
 from tokenizers.trainers import BpeTrainer
 
 
@@ -29,7 +30,7 @@ OUTPUT_FILE = (
 
 VOCAB_SIZE = 8000
 
-MIN_FREQUENCY = 2
+MIN_FREQUENCY = 1
 
 
 # ============================================================
@@ -49,14 +50,23 @@ if not TRAIN_FILE.exists():
 
 tokenizer = Tokenizer(
     BPE(
-        unk_token="<unk>"
+        unk_token="<unk>",
+        byte_fallback=True
     )
 )
 
-
-tokenizer.pre_tokenizer = ByteLevel(
+tokenizer.pre_tokenizer = ByteLevelPreTokenizer(
     add_prefix_space=False
 )
+
+tokenizer.decoder = ByteLevelDecoder()
+
+
+tokenizer.pre_tokenizer = ByteLevelPreTokenizer(
+    add_prefix_space=False
+)
+
+tokenizer.decoder = ByteLevelDecoder()
 
 
 # ============================================================
@@ -67,6 +77,8 @@ trainer = BpeTrainer(
     vocab_size=VOCAB_SIZE,
 
     min_frequency=MIN_FREQUENCY,
+
+    initial_alphabet=ByteLevelPreTokenizer.alphabet(),
 
     special_tokens=[
         "<pad>",
@@ -141,6 +153,10 @@ encoded = tokenizer.encode(
     test_text
 )
 
+decoded = tokenizer.decode(
+    encoded.ids
+)
+
 print()
 
 print(
@@ -177,3 +193,27 @@ print(
     f"Token count: "
     f"{len(encoded.ids)}"
 )
+
+print()
+
+print(
+    "Decoded:"
+)
+
+print(
+    decoded
+)
+
+print()
+
+if decoded == test_text:
+
+    print(
+        "Round-trip test: PASS"
+    )
+
+else:
+
+    print(
+        "Round-trip test: FAIL"
+    )

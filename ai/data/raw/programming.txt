@@ -3,32 +3,28 @@
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
+Write a Python function that adds two numbers.
+
+<assistant>
+
+def add(a, b):
+    return a + b
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
 Write a Python function that checks whether a number is even.
 
 <assistant>
+
 def is_even(number):
     return number % 2 == 0
 
-<end>
-
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-Write a Python function that calculates the factorial of a number.
-
-<assistant>
-def factorial(n):
-    if n < 0:
-        raise ValueError("n must be non-negative")
-
-    result = 1
-
-    for value in range(2, n + 1):
-        result *= value
-
-    return result
 
 <end>
 
@@ -37,9 +33,25 @@ def factorial(n):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-Write a Python function that finds the largest number in a list.
+Write a Python function that squares a number.
 
 <assistant>
+
+def square(number):
+    return number * number
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Write a Python function that finds the largest value in a list.
+
+<assistant>
+
 def find_largest(numbers):
     if not numbers:
         raise ValueError("numbers cannot be empty")
@@ -52,6 +64,7 @@ def find_largest(numbers):
 
     return largest
 
+
 <end>
 
 <bos>
@@ -62,8 +75,10 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 Write a Python function that reverses a string.
 
 <assistant>
+
 def reverse_string(text):
     return text[::-1]
+
 
 <end>
 
@@ -72,15 +87,36 @@ def reverse_string(text):
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-How can I count the number of words in a string?
+Write a Python function that counts the words in a string.
 
 <assistant>
-You can split the string on whitespace and count the resulting elements.
 
-Example:
+def count_words(text):
+    return len(text.split())
 
-text = "hello world"
-word_count = len(text.split())
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Write a Python function that calculates a factorial.
+
+<assistant>
+
+def factorial(n):
+    if n < 0:
+        raise ValueError("n must be non-negative")
+
+    result = 1
+
+    for value in range(2, n + 1):
+        result *= value
+
+    return result
+
 
 <end>
 

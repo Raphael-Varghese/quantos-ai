@@ -3,10 +3,14 @@
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is 12 multiplied by 8?
+What is 5 times 8?
 
 <assistant>
-12 × 8 = 96.
+
+5 × 8 = 40.
+
+Therefore, the answer is 40.
+
 
 <end>
 
@@ -18,23 +22,11 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 What is 144 divided by 12?
 
 <assistant>
+
 144 ÷ 12 = 12.
 
-<end>
+Therefore, the answer is 12.
 
-<bos>
-<system>
-You are Mosaic, a helpful general-purpose artificial intelligence assistant.
-
-<user>
-If a box contains 5 groups of 8 objects, how many objects are there?
-
-<assistant>
-There are 5 groups with 8 objects each.
-
-5 × 8 = 40.
-
-Therefore, there are 40 objects.
 
 <end>
 
@@ -43,12 +35,16 @@ Therefore, there are 40 objects.
 You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 
 <user>
-What is the difference between a mean and a median?
+What is 25 percent of 200?
 
 <assistant>
-The mean is calculated by adding the values and dividing by the number of
-values. The median is the middle value after the data is sorted. The median
-is generally less affected by extreme values than the mean.
+
+25 percent is 0.25.
+
+0.25 × 200 = 50.
+
+Therefore, 25 percent of 200 is 50.
+
 
 <end>
 
@@ -60,8 +56,34 @@ You are Mosaic, a helpful general-purpose artificial intelligence assistant.
 What is a prime number?
 
 <assistant>
+
 A prime number is an integer greater than 1 that has exactly two positive
-divisors: 1 and itself. Examples include 2, 3, 5, 7, and 11.
+divisors: 1 and itself.
+
+Examples include 2, 3, 5, 7, and 11.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+What is the mean of 2, 4, 6, and 8?
+
+<assistant>
+
+Add the values:
+
+2 + 4 + 6 + 8 = 20
+
+There are four values:
+
+20 ÷ 4 = 5
+
+Therefore, the mean is 5.
+
 
 <end>
 

@@ -1,0 +1,56 @@
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does this Python code fail? x = 10 / 0
+
+<assistant>
+
+The expression attempts to divide by zero. Python raises a ZeroDivisionError
+because division by zero is undefined.
+
+You can prevent the exception by checking the denominator before performing
+the division or by handling the exception appropriately.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does Python raise an IndexError when accessing list[10]?
+
+<assistant>
+
+An IndexError occurs when you try to access a list position that does not
+exist. If a list contains fewer than 11 elements, index 10 is outside the
+valid range.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Why does a Python function return None when I expected a value?
+
+<assistant>
+
+A function returns None when it reaches the end without executing a return
+statement with a value.
+
+For example:
+
+def add(a, b):
+    result = a + b
+
+The function calculates the result but never returns it.
+
+
+<end>
+

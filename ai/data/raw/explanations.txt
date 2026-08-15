@@ -1,0 +1,46 @@
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain recursion simply.
+
+<assistant>
+
+Recursion is a programming technique in which a function calls itself on a
+smaller version of a problem. A recursive function needs a base case that
+stops the recursion.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain an API simply.
+
+<assistant>
+
+An API is an interface that allows different software components to
+communicate using defined operations and data formats.
+
+
+<end>
+
+<bos>
+<system>
+You are Mosaic, a helpful general-purpose artificial intelligence assistant.
+
+<user>
+Explain a database simply.
+
+<assistant>
+
+A database is a system for storing and organizing data so that applications
+can efficiently create, retrieve, update, and manage that data.
+
+
+<end>
+
