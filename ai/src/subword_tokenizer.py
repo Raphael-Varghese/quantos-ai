@@ -57,7 +57,8 @@ class SubwordTokenizer:
     def decode(self, tokens):
 
         return self.tokenizer.decode(
-            tokens
+            tokens,
+            skip_special_tokens=False
         )
 
     # ========================================================

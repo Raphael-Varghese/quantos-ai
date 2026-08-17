@@ -30,10 +30,13 @@ VAL_FILE = (
 # Configuration
 # ============================================================
 
-TRAIN_SPLIT = 0.85
+TRAIN_SPLIT = 0.90
+
+SEED = 1337
+
 
 # ============================================================
-# Load text
+# Load
 # ============================================================
 
 if not INPUT_FILE.exists():
@@ -43,21 +46,46 @@ if not INPUT_FILE.exists():
     )
 
 
-print(
-    f"Loading dataset: {INPUT_FILE}"
+text = INPUT_FILE.read_text(
+    encoding="utf-8"
 )
 
-with open(
-    INPUT_FILE,
-    "r",
-    encoding="utf-8"
-) as file:
 
-    text = file.read()
+# ============================================================
+# Split by complete examples
+# ============================================================
+
+examples = [
+    block.strip()
+    for block in text.split("<bos>")
+    if block.strip()
+]
 
 
-print(
-    f"Characters: {len(text):,}"
+if len(examples) < 10:
+
+    raise ValueError(
+        "Dataset contains too few examples."
+    )
+
+
+split = int(
+    len(examples) * TRAIN_SPLIT
+)
+
+
+train_examples = examples[:split]
+val_examples = examples[split:]
+
+
+train_text = "\n\n".join(
+    "<bos>\n" + example
+    for example in train_examples
+)
+
+val_text = "\n\n".join(
+    "<bos>\n" + example
+    for example in val_examples
 )
 
 
@@ -77,36 +105,19 @@ print(
 # Encode
 # ============================================================
 
-print(
-    "Tokenizing dataset..."
-)
+print("Tokenizing training data...")
 
-tokens = tokenizer.encode(
-    text
-)
-
-tokens = np.asarray(
-    tokens,
+train_tokens = np.asarray(
+    tokenizer.encode(train_text),
     dtype=np.uint16
 )
 
+print("Tokenizing validation data...")
 
-print(
-    f"Tokens: {len(tokens):,}"
+val_tokens = np.asarray(
+    tokenizer.encode(val_text),
+    dtype=np.uint16
 )
-
-
-# ============================================================
-# Train / validation split
-# ============================================================
-
-split = int(
-    len(tokens) * TRAIN_SPLIT
-)
-
-train_tokens = tokens[:split]
-
-val_tokens = tokens[split:]
 
 
 # ============================================================
@@ -133,15 +144,30 @@ val_tokens.tofile(
 # ============================================================
 
 print()
+print("=" * 60)
+print("DATASET PROCESSING")
+print("=" * 60)
 
 print(
-    f"Training tokens: "
-    f"{len(train_tokens):,}"
+    f"Total examples:      {len(examples):,}"
 )
 
 print(
-    f"Validation tokens: "
-    f"{len(val_tokens):,}"
+    f"Training examples:   {len(train_examples):,}"
+)
+
+print(
+    f"Validation examples: {len(val_examples):,}"
+)
+
+print()
+
+print(
+    f"Training tokens:     {len(train_tokens):,}"
+)
+
+print(
+    f"Validation tokens:   {len(val_tokens):,}"
 )
 
 print()
@@ -152,10 +178,4 @@ print(
 
 print(
     f"Saved: {VAL_FILE}"
-)
-
-print()
-
-print(
-    "Dataset processing complete."
 )

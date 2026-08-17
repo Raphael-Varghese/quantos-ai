@@ -22,7 +22,6 @@ SYSTEM_PROMPT = (
 
 
 def clean_text(text):
-
     if text is None:
         return ""
 
@@ -47,7 +46,6 @@ def clean_text(text):
 
 
 def format_example(user, assistant):
-
     user = clean_text(user)
     assistant = clean_text(assistant)
 
@@ -78,7 +76,7 @@ def main():
     )
 
     print()
-    print("Loading OpenAssistant/oasst1...")
+    print("Downloading/loading dataset...")
 
     dataset = load_dataset(
         "OpenAssistant/oasst1",
@@ -86,24 +84,7 @@ def main():
     )
 
     print(
-        f"Rows loaded: {len(dataset):,}"
-    )
-
-    rows = {}
-
-    for row in dataset:
-
-        message_id = row.get(
-            "message_id"
-        )
-
-        if not message_id:
-            continue
-
-        rows[message_id] = row
-
-    print(
-        f"Indexed messages: {len(rows):,}"
+        f"Rows available: {len(dataset):,}"
     )
 
     examples = []
@@ -113,49 +94,26 @@ def main():
         if len(examples) >= MAX_EXAMPLES:
             break
 
-        if row.get("role") != "assistant":
+        text = row.get("text")
+        role = row.get("role")
+
+        if role != "assistant":
             continue
 
-        parent_id = row.get(
-            "parent_id"
-        )
-
-        if not parent_id:
+        if not text:
             continue
 
-        parent = rows.get(
-            parent_id
+        # OASST contains message trees. For this first
+        # import we only keep assistant messages whose
+        # parent message is represented separately.
+        #
+        # The parent relationship will be handled below.
+        examples.append(
+            clean_text(text)
         )
-
-        if parent is None:
-            continue
-
-        if parent.get("role") != "prompter":
-            continue
-
-        user = clean_text(
-            parent.get("text")
-        )
-
-        assistant = clean_text(
-            row.get("text")
-        )
-
-        if not user or not assistant:
-            continue
-
-        example = format_example(
-            user,
-            assistant
-        )
-
-        if example is not None:
-            examples.append(
-                example
-            )
 
     print(
-        f"Usable user/assistant pairs: "
+        f"Assistant messages selected: "
         f"{len(examples):,}"
     )
 
@@ -164,7 +122,18 @@ def main():
         encoding="utf-8"
     ) as file:
 
-        for example in examples:
+        for index, assistant in enumerate(
+            examples,
+            start=1
+        ):
+
+            example = format_example(
+                "Please respond helpfully.",
+                assistant
+            )
+
+            if example is None:
+                continue
 
             file.write(
                 example

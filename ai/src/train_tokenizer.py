@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from tokenizers import Tokenizer
-from tokenizers.decoders import ByteLevel as ByteLevelDecoder
+from tokenizers.decoders import ByteLevel
 from tokenizers.models import BPE
 from tokenizers.pre_tokenizers import ByteLevel as ByteLevelPreTokenizer
 from tokenizers.trainers import BpeTrainer
@@ -29,12 +29,11 @@ OUTPUT_FILE = (
 # ============================================================
 
 VOCAB_SIZE = 8000
-
 MIN_FREQUENCY = 1
 
 
 # ============================================================
-# Validate dataset
+# Validation
 # ============================================================
 
 if not TRAIN_FILE.exists():
@@ -45,7 +44,7 @@ if not TRAIN_FILE.exists():
 
 
 # ============================================================
-# Create tokenizer
+# Tokenizer
 # ============================================================
 
 tokenizer = Tokenizer(
@@ -55,18 +54,13 @@ tokenizer = Tokenizer(
     )
 )
 
-tokenizer.pre_tokenizer = ByteLevelPreTokenizer(
-    add_prefix_space=False
+tokenizer.pre_tokenizer = (
+    ByteLevelPreTokenizer(
+        add_prefix_space=False
+    )
 )
 
-tokenizer.decoder = ByteLevelDecoder()
-
-
-tokenizer.pre_tokenizer = ByteLevelPreTokenizer(
-    add_prefix_space=False
-)
-
-tokenizer.decoder = ByteLevelDecoder()
+tokenizer.decoder = ByteLevel()
 
 
 # ============================================================
@@ -75,10 +69,11 @@ tokenizer.decoder = ByteLevelDecoder()
 
 trainer = BpeTrainer(
     vocab_size=VOCAB_SIZE,
-
     min_frequency=MIN_FREQUENCY,
 
-    initial_alphabet=ByteLevelPreTokenizer.alphabet(),
+    initial_alphabet=(
+        ByteLevelPreTokenizer.alphabet()
+    ),
 
     special_tokens=[
         "<pad>",
@@ -97,8 +92,9 @@ trainer = BpeTrainer(
 # Train
 # ============================================================
 
+print("Training BPE tokenizer...")
 print(
-    "Training BPE tokenizer..."
+    f"Dataset: {TRAIN_FILE}"
 )
 
 tokenizer.train(
@@ -128,10 +124,8 @@ tokenizer.save(
 # ============================================================
 
 print()
-
 print(
-    f"Tokenizer saved to: "
-    f"{OUTPUT_FILE}"
+    f"Tokenizer saved: {OUTPUT_FILE}"
 )
 
 print(
@@ -145,8 +139,15 @@ print(
 # ============================================================
 
 test_text = (
-    "Write a Python function that adds "
-    "two numbers."
+    "<bos>\n"
+    "<system>\n"
+    "You are Mosaic.\n\n"
+    "<user>\n"
+    "Write a Python function that adds two numbers.\n\n"
+    "<assistant>\n"
+    "def add(a, b):\n"
+    "    return a + b\n\n"
+    "<end>"
 )
 
 encoded = tokenizer.encode(
@@ -154,44 +155,24 @@ encoded = tokenizer.encode(
 )
 
 decoded = tokenizer.decode(
-    encoded.ids
+    encoded.ids,
+    skip_special_tokens=False
 )
 
 print()
 
 print(
-    "Test text:"
-)
-
-print(
-    test_text
+    "Round-trip test:"
 )
 
 print()
 
 print(
-    "Tokens:"
+    "Expected:"
 )
 
 print(
-    encoded.tokens
-)
-
-print()
-
-print(
-    "Token IDs:"
-)
-
-print(
-    encoded.ids
-)
-
-print()
-
-print(
-    f"Token count: "
-    f"{len(encoded.ids)}"
+    repr(test_text)
 )
 
 print()
@@ -201,7 +182,7 @@ print(
 )
 
 print(
-    decoded
+    repr(decoded)
 )
 
 print()
@@ -216,4 +197,8 @@ else:
 
     print(
         "Round-trip test: FAIL"
+    )
+
+    raise RuntimeError(
+        "Tokenizer round-trip test failed."
     )
