@@ -3,55 +3,35 @@ from pathlib import Path
 from datasets import load_dataset
 
 
-OUTPUT_DIR = Path(
-    "data/external/oasst1"
-)
-
-OUTPUT_FILE = (
-    OUTPUT_DIR /
-    "oasst1_mosaic.txt"
-)
+OUTPUT_DIR = Path("data/external/oasst1")
+OUTPUT_FILE = OUTPUT_DIR / "oasst1_mosaic.txt"
 
 MAX_EXAMPLES = 5000
 
+MIN_USER_CHARS = 10
+MIN_ASSISTANT_CHARS = 40
+MAX_ASSISTANT_CHARS = 4000
+
 
 SYSTEM_PROMPT = (
-    "You are Mosaic, a helpful general-purpose "
-    "artificial intelligence assistant."
+    "You are Mosaic, a helpful general-purpose artificial "
+    "intelligence assistant."
 )
 
 
 def clean_text(text):
-    if text is None:
+    if not isinstance(text, str):
         return ""
 
-    text = str(text)
-
-    text = text.replace(
-        "\r\n",
-        "\n"
+    return (
+        text
+        .replace("\r\n", "\n")
+        .replace("\r", "\n")
+        .strip()
     )
-
-    text = text.replace(
-        "\r",
-        "\n"
-    )
-
-    lines = [
-        line.rstrip()
-        for line in text.splitlines()
-    ]
-
-    return "\n".join(lines).strip()
 
 
 def format_example(user, assistant):
-    user = clean_text(user)
-    assistant = clean_text(assistant)
-
-    if not user or not assistant:
-        return None
-
     return (
         "<bos>\n"
         "<system>\n"
@@ -69,13 +49,8 @@ def main():
     print("=" * 70)
     print("IMPORTING OPENASSISTANT")
     print("=" * 70)
-
-    OUTPUT_DIR.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
     print()
+
     print("Downloading/loading dataset...")
 
     dataset = load_dataset(
@@ -87,66 +62,124 @@ def main():
         f"Rows available: {len(dataset):,}"
     )
 
-    examples = []
+    # --------------------------------------------------------
+    # Build message index.
+    # --------------------------------------------------------
+
+    messages = {}
 
     for row in dataset:
+
+        message_id = row.get("message_id")
+
+        if message_id:
+            messages[message_id] = row
+
+    print(
+        f"Indexed messages: {len(messages):,}"
+    )
+
+    # --------------------------------------------------------
+    # Extract assistant responses with their parent prompt.
+    # --------------------------------------------------------
+
+    examples = []
+
+    seen = set()
+
+    for row in dataset:
+
+        if row.get("deleted", False):
+            continue
+
+        if row.get("role") != "assistant":
+            continue
+
+        if row.get("lang") not in (None, "en"):
+            continue
+
+        assistant = clean_text(
+            row.get("text", "")
+        )
+
+        if len(assistant) < MIN_ASSISTANT_CHARS:
+            continue
+
+        if len(assistant) > MAX_ASSISTANT_CHARS:
+            continue
+
+        parent_id = row.get("parent_id")
+
+        if not parent_id:
+            continue
+
+        parent = messages.get(parent_id)
+
+        if parent is None:
+            continue
+
+        if parent.get("deleted", False):
+            continue
+
+        if parent.get("role") != "prompter":
+            continue
+
+        if parent.get("lang") not in (None, "en"):
+            continue
+
+        user = clean_text(
+            parent.get("text", "")
+        )
+
+        if len(user) < MIN_USER_CHARS:
+            continue
+
+        key = (
+            user,
+            assistant
+        )
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+
+        examples.append(
+            format_example(
+                user,
+                assistant
+            )
+        )
 
         if len(examples) >= MAX_EXAMPLES:
             break
 
-        text = row.get("text")
-        role = row.get("role")
-
-        if role != "assistant":
-            continue
-
-        if not text:
-            continue
-
-        # OASST contains message trees. For this first
-        # import we only keep assistant messages whose
-        # parent message is represented separately.
-        #
-        # The parent relationship will be handled below.
-        examples.append(
-            clean_text(text)
+    if not examples:
+        raise RuntimeError(
+            "No valid OpenAssistant examples found."
         )
 
-    print(
-        f"Assistant messages selected: "
-        f"{len(examples):,}"
+    OUTPUT_DIR.mkdir(
+        parents=True,
+        exist_ok=True
     )
 
-    with OUTPUT_FILE.open(
-        "w",
+    OUTPUT_FILE.write_text(
+        "\n\n".join(examples) + "\n",
         encoding="utf-8"
-    ) as file:
-
-        for index, assistant in enumerate(
-            examples,
-            start=1
-        ):
-
-            example = format_example(
-                "Please respond helpfully.",
-                assistant
-            )
-
-            if example is None:
-                continue
-
-            file.write(
-                example
-            )
-
-            file.write(
-                "\n\n"
-            )
+    )
 
     print()
     print(
+        f"Examples selected: {len(examples):,}"
+    )
+
+    print(
         f"Saved: {OUTPUT_FILE}"
     )
+
+    print()
+    print("Import complete.")
 
 
 if __name__ == "__main__":
