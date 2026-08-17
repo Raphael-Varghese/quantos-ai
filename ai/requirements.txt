@@ -1,3 +1,4 @@
-torch
-numpy
-tokenizers
+torch==2.13.0+cu130
+numpy==2.5.2
+tokenizers==0.23.1
+dataset==5.0.1
