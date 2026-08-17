@@ -1,0 +1,3 @@
+/ai/src/__pycache__/*
+/ai/checkpoints/*
+/ai/data/processed/*
