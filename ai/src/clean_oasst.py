@@ -21,6 +21,8 @@ MIN_ASSISTANT_CHARS = 80
 MAX_USER_CHARS = 3000
 MAX_ASSISTANT_CHARS = 3500
 
+MIN_SCORE = 1
+
 
 # ============================================================
 # Parsing
@@ -93,6 +95,51 @@ def normalize_question(text):
 
 
 # ============================================================
+# Suspicious content
+# ============================================================
+
+SUSPICIOUS_PATTERNS = [
+
+    # Requests for the assistant to pretend to be a person.
+    r"\bpretend you are\b",
+    r"\bact as if you are\b",
+    r"\bif you were human\b",
+
+    # Explicit model/personality bait.
+    r"\bwhat(?:'s| is) your favorite\b",
+    r"\bdo you have a favorite\b",
+
+    # Conversation fragments rather than useful standalone questions.
+    r"^\s*(please )?(continue|go on)\s*[.!?]*$",
+    r"^\s*(ok|okay|thanks|thank you)\s*[.!?]*$",
+    r"^\s*(can you elaborate|elaborate)\s*[.!?]*$",
+
+    # Requests to reproduce hidden/internal information.
+    r"\breveal (your|the) (system prompt|instructions)\b",
+    r"\bshow (me )?(your|the) system prompt\b",
+    r"\bhidden instructions\b",
+
+]
+
+
+def is_suspicious_question(question):
+
+    normalized = normalize_question(
+        question
+    )
+
+    for pattern in SUSPICIOUS_PATTERNS:
+
+        if re.search(
+            pattern,
+            normalized
+        ):
+            return True
+
+    return False
+
+
+# ============================================================
 # Quality scoring
 # ============================================================
 
@@ -102,7 +149,7 @@ def score_answer(answer):
 
     length = len(answer)
 
-    # Prefer useful answers over extremely short ones.
+    # Useful answer length.
     if length >= 200:
         score += 3
 
@@ -112,7 +159,7 @@ def score_answer(answer):
     elif length >= 80:
         score += 1
 
-    # Prefer answers with multiple sentences.
+    # Multiple sentences generally indicate a developed answer.
     sentence_count = len(
         re.findall(
             r"[.!?](?:\s|$)",
@@ -126,11 +173,11 @@ def score_answer(answer):
     elif sentence_count >= 2:
         score += 1
 
-    # Reward structured answers.
+    # Structured response.
     if "\n" in answer:
         score += 1
 
-    # Reward code examples.
+    # Code examples.
     if (
         "```" in answer
         or "def " in answer
@@ -138,7 +185,7 @@ def score_answer(answer):
     ):
         score += 1
 
-    # Penalize unfinished-looking answers.
+    # Penalize obvious truncation.
     if answer.endswith(
         (
             ":",
@@ -150,7 +197,7 @@ def score_answer(answer):
     ):
         score -= 3
 
-    # Penalize obvious truncation.
+    # Penalize unbalanced delimiters.
     if answer.count("(") > answer.count(")"):
         score -= 2
 
@@ -209,10 +256,12 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Basic quality filtering
+    # Length filtering
     # --------------------------------------------------------
 
     filtered = []
+
+    rejected_length = 0
 
     for example in examples:
 
@@ -220,15 +269,19 @@ def main():
         assistant = example["assistant"]
 
         if len(user) < MIN_USER_CHARS:
+            rejected_length += 1
             continue
 
         if len(user) > MAX_USER_CHARS:
+            rejected_length += 1
             continue
 
         if len(assistant) < MIN_ASSISTANT_CHARS:
+            rejected_length += 1
             continue
 
         if len(assistant) > MAX_ASSISTANT_CHARS:
+            rejected_length += 1
             continue
 
         filtered.append(
@@ -240,13 +293,48 @@ def main():
         f"{len(filtered):,}"
     )
 
+    print(
+        f"Rejected by length: "
+        f"{rejected_length:,}"
+    )
+
+    # --------------------------------------------------------
+    # Suspicious question filtering
+    # --------------------------------------------------------
+
+    clean = []
+
+    rejected_suspicious = 0
+
+    for example in filtered:
+
+        if is_suspicious_question(
+            example["user"]
+        ):
+            rejected_suspicious += 1
+            continue
+
+        clean.append(
+            example
+        )
+
+    print(
+        f"After suspicious filtering: "
+        f"{len(clean):,}"
+    )
+
+    print(
+        f"Rejected as suspicious: "
+        f"{rejected_suspicious:,}"
+    )
+
     # --------------------------------------------------------
     # Group by normalized question.
     # --------------------------------------------------------
 
     groups = defaultdict(list)
 
-    for example in filtered:
+    for example in clean:
 
         key = normalize_question(
             example["user"]
@@ -262,10 +350,12 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Select best answer for each question.
+    # Select highest-quality answer.
     # --------------------------------------------------------
 
     selected = []
+
+    rejected_low_score = 0
 
     for question, candidates in groups.items():
 
@@ -276,12 +366,26 @@ def main():
             )
         )
 
+        score = score_answer(
+            best["assistant"]
+        )
+
+        if score < MIN_SCORE:
+
+            rejected_low_score += 1
+            continue
+
         selected.append(
             best
         )
 
+    print(
+        f"Rejected low-score examples: "
+        f"{rejected_low_score:,}"
+    )
+
     # --------------------------------------------------------
-    # Final deterministic ordering.
+    # Deterministic ordering.
     # --------------------------------------------------------
 
     selected.sort(
@@ -318,6 +422,11 @@ def main():
     print(
         f"Final examples: "
         f"{len(selected):,}"
+    )
+
+    print(
+        f"Final characters: "
+        f"{len(output):,}"
     )
 
     print(
