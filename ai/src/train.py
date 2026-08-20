@@ -86,6 +86,15 @@ optimizer = torch.optim.AdamW(
 
 
 # ============================================================
+# Checkpoint paths
+# ============================================================
+
+BEST_CHECKPOINT_FILE = (
+    f"{CHECKPOINT_DIR}/best_model.pt"
+)
+
+
+# ============================================================
 # Checkpoint loading
 # ============================================================
 
@@ -239,11 +248,18 @@ def evaluate():
 # Checkpoint saving
 # ============================================================
 
-def save_checkpoint(step):
+def save_checkpoint(
+    step,
+    filename
+):
 
     os.makedirs(
         CHECKPOINT_DIR,
         exist_ok=True
+    )
+
+    path = (
+        f"{CHECKPOINT_DIR}/{filename}"
     )
 
     torch.save(
@@ -276,12 +292,11 @@ def save_checkpoint(step):
             "parameter_count":
                 parameter_count,
         },
-        CHECKPOINT_FILE
+        path
     )
 
     print(
-        f"Checkpoint saved: "
-        f"{CHECKPOINT_FILE}"
+        f"Checkpoint saved: {path}"
     )
 
 
@@ -292,6 +307,16 @@ def save_checkpoint(step):
 print("Starting training...")
 
 start_time = time.time()
+
+best_validation_loss = float(
+    "inf"
+)
+
+best_step = -1
+
+steps_since_improvement = 0
+
+EARLY_STOPPING_PATIENCE = 800
 
 
 for step in range(
@@ -330,13 +355,79 @@ for step in range(
             time.time() - start_time
         )
 
+        validation_loss = (
+            losses["validation"]
+        )
+
         print(
             f"step {step:5d} | "
             f"lr {learning_rate:.6e} | "
             f"train {losses['train']:.4f} | "
-            f"val {losses['validation']:.4f} | "
+            f"val {validation_loss:.4f} | "
             f"time {elapsed:.1f}s"
         )
+
+        # ----------------------------------------------------
+        # Best-model checkpoint
+        # ----------------------------------------------------
+
+        if (
+            validation_loss
+            <
+            best_validation_loss
+        ):
+
+            best_validation_loss = (
+                validation_loss
+            )
+
+            best_step = step
+
+            steps_since_improvement = 0
+
+            save_checkpoint(
+                step,
+                "best_model.pt"
+            )
+
+            print(
+                f"NEW BEST! "
+                f"val {validation_loss:.4f} "
+                f"at step {step}"
+            )
+
+        else:
+
+            steps_since_improvement += (
+                EVAL_INTERVAL
+            )
+
+        # ----------------------------------------------------
+        # Early stopping
+        # ----------------------------------------------------
+
+        if (
+            steps_since_improvement
+            >=
+            EARLY_STOPPING_PATIENCE
+        ):
+
+            print()
+            print(
+                "Early stopping."
+            )
+
+            print(
+                f"Best validation loss: "
+                f"{best_validation_loss:.4f}"
+            )
+
+            print(
+                f"Best step: "
+                f"{best_step}"
+            )
+
+            break
 
     # --------------------------------------------------------
     # Gradient accumulation
@@ -383,7 +474,7 @@ for step in range(
     optimizer.step()
 
     # --------------------------------------------------------
-    # Checkpoint
+    # Regular checkpoint
     # --------------------------------------------------------
 
     if (
@@ -391,16 +482,15 @@ for step in range(
         and step % EVAL_INTERVAL == 0
     ):
 
-        save_checkpoint(step)
+        save_checkpoint(
+            step,
+            "model.pt"
+        )
 
 
 # ============================================================
-# Final checkpoint
+# Final output
 # ============================================================
-
-save_checkpoint(
-    MAX_STEPS - 1
-)
 
 print()
 
@@ -409,5 +499,16 @@ print(
 )
 
 print(
-    f"Model saved to {CHECKPOINT_FILE}"
+    f"Best validation loss: "
+    f"{best_validation_loss:.4f}"
+)
+
+print(
+    f"Best step: "
+    f"{best_step}"
+)
+
+print(
+    f"Best model: "
+    f"{BEST_CHECKPOINT_FILE}"
 )

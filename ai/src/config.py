@@ -6,14 +6,20 @@ import torch
 # Hardware
 # ============================================================
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device(
+    "cuda"
+    if torch.cuda.is_available()
+    else "cpu"
+)
 
 CPU_COUNT = min(
     os.cpu_count() or 4,
     4
 )
 
-torch.set_num_threads(CPU_COUNT)
+torch.set_num_threads(
+    CPU_COUNT
+)
 
 
 # ============================================================
@@ -76,7 +82,7 @@ GRADIENT_CLIP = 1.0
 
 EVAL_INTERVAL = 100
 
-EVAL_STEPS = 20
+EVAL_STEPS = 100
 
 
 # ============================================================
@@ -89,4 +95,4 @@ CHECKPOINT_FILE = (
     f"{CHECKPOINT_DIR}/model.pt"
 )
 
-RESUME_FROM_CHECKPOINT = True
+RESUME_FROM_CHECKPOINT = False

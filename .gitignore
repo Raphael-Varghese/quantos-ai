@@ -1,3 +1,4 @@
 /ai/src/__pycache__/*
 /ai/data/processed/*
 /ai/data_backup/*
+/ai/kaggle_upload/*
